@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#e94560">
+    <meta name="theme-color" content="#0f0f23">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Rent Receipt">
     <title>Rent Payment Receipt</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --primary-light: #16213e;
-            --accent: #e94560;
-            --accent-light: #ff6b6b;
-            --success: #00d9a5;
-            --warning: #ffc107;
-            --bg: #0f0f23;
-            --card-bg: #1a1a2e;
-            --card-bg-light: #252542;
-            --text: #ffffff;
-            --text-secondary: #a0a0b0;
-            --border: #2d2d4a;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface-elevated: #1a1a25;
+            --surface-hover: #222230;
+            --primary: #6366f1;
+            --primary-hover: #818cf8;
+            --primary-dark: #4f46e5;
+            --accent: #22d3ee;
+            --accent-glow: rgba(34, 211, 238, 0.3);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #2e2e3a;
+            --border-light: #3e3e4a;
+            --glow: 0 0 40px rgba(99, 102, 241, 0.15);
         }
 
         * {
@@ -37,94 +42,116 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             min-height: 100vh;
-            padding: 20px;
+            padding: 16px;
             color: var(--text);
+            background-image: 
+                radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
         }
 
         .container {
-            max-width: 480px;
+            max-width: 440px;
             margin: 0 auto;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
+            margin-bottom: 24px;
+            padding: 16px 0;
         }
 
         .header-logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 28px;
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+            margin: 0 auto 12px;
+            font-size: 26px;
+            box-shadow: var(--glow);
         }
 
         .header h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, var(--text), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .header p {
-            color: var(--text-secondary);
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 400;
         }
 
         .app-container {
-            background: var(--card-bg);
+            background: var(--surface);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid var(--border);
         }
 
         .nav-tabs {
             display: flex;
-            background: var(--card-bg-light);
-            padding: 6px;
+            background: var(--surface-elevated);
+            padding: 4px;
             gap: 4px;
             border-bottom: 1px solid var(--border);
         }
 
         .nav-tab {
             flex: 1;
-            padding: 14px 10px;
+            padding: 12px 8px;
             text-align: center;
             border-radius: 12px;
             cursor: pointer;
             font-weight: 500;
             font-size: 13px;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
+            transition: all 0.25s ease;
+            color: var(--text-muted);
             border: none;
             background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .nav-tab svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
         }
 
         .nav-tab.active {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .nav-tab.active svg {
+            opacity: 1;
         }
 
         .nav-tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text);
+            background: var(--surface-hover);
+            color: var(--text-secondary);
         }
 
         .tab-content {
             display: none;
-            padding: 24px;
+            padding: 20px;
             animation: fadeIn 0.3s ease;
         }
 
@@ -133,75 +160,83 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .section-title {
-            font-size: 12px;
+        .section-label {
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .section-title::before {
+        .section-label::before {
             content: '';
-            width: 4px;
-            height: 16px;
-            background: var(--accent);
+            width: 3px;
+            height: 12px;
+            background: var(--primary);
             border-radius: 2px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             color: var(--text-secondary);
             font-weight: 500;
             margin-bottom: 8px;
             font-size: 13px;
         }
 
+        .form-group label .hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
         .form-group input, .form-group select {
             width: 100%;
             padding: 14px 16px;
-            background: var(--card-bg-light);
+            background: var(--surface-elevated);
             border: 1px solid var(--border);
             border-radius: 12px;
             font-size: 15px;
             color: var(--text);
-            transition: all 0.3s;
+            transition: all 0.25s;
             font-family: inherit;
+            font-weight: 500;
         }
 
         .form-group input::placeholder {
-            color: var(--text-secondary);
-            opacity: 0.6;
+            color: var(--text-muted);
         }
 
         .form-group input:focus, .form-group select:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
         }
 
         .form-group select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0b0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 16px center;
+            background-position: right 14px center;
         }
 
         .form-group select option {
-            background: var(--card-bg);
+            background: var(--surface);
             color: var(--text);
         }
 
@@ -216,21 +251,26 @@
 
         .btn {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
             border-radius: 14px;
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s;
             font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
 
         .btn:active {
@@ -238,52 +278,149 @@
         }
 
         .btn-secondary {
-            background: var(--card-bg-light);
+            background: var(--surface-elevated);
             border: 1px solid var(--border);
-            color: var(--text);
-            margin-top: 12px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            box-shadow: none;
         }
 
         .btn-secondary:hover {
-            background: var(--border);
+            background: var(--surface-hover);
             box-shadow: none;
         }
 
         .info-card {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(255, 107, 107, 0.05));
-            border: 1px solid rgba(233, 69, 96, 0.2);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 14px;
             padding: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .info-card-content {
+            flex: 1;
         }
 
         .info-card .label {
             font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
         }
 
         .info-card .value {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .manual-input-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            background: var(--surface-elevated);
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .manual-input-toggle:hover {
+            border-color: var(--primary);
+        }
+
+        .manual-input-toggle.active {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .toggle-switch {
+            width: 36px;
+            height: 20px;
+            background: var(--border);
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.2s;
+        }
+
+        .manual-input-toggle.active .toggle-switch {
+            background: var(--primary);
+        }
+
+        .manual-input-toggle.active .toggle-switch::after {
+            left: 18px;
+            background: white;
+        }
+
+        .toggle-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .manual-input-section {
+            display: none;
+            margin-bottom: 16px;
+            padding: 14px;
+            background: var(--surface-elevated);
+            border-radius: 12px;
+            border: 1px dashed var(--border);
+        }
+
+        .manual-input-section.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
 
         .calculation-card {
-            background: var(--card-bg-light);
+            background: var(--surface-elevated);
             border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 16px;
             border: 1px solid var(--border);
         }
 
         .calculation-card .title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text);
+        }
+
+        .calculation-card .title svg {
+            color: var(--accent);
         }
 
         .calc-row {
@@ -291,7 +428,7 @@
             justify-content: space-between;
             padding: 10px 0;
             border-bottom: 1px solid var(--border);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .calc-row:last-child {
@@ -299,18 +436,19 @@
         }
 
         .calc-row .key {
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .calc-row .val {
             font-weight: 600;
+            color: var(--text);
         }
 
         .calc-row.total {
             margin-top: 10px;
-            padding-top: 16px;
+            padding-top: 14px;
             border-top: 2px dashed var(--border);
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .calc-row.total .key {
@@ -320,123 +458,117 @@
 
         .calc-row.total .val {
             color: var(--success);
-            font-size: 18px;
+            font-size: 17px;
         }
 
         .receipt {
-            background: var(--card-bg-light);
+            background: var(--surface-elevated);
             border-radius: 20px;
-            padding: 24px;
+            padding: 20px;
             border: 1px solid var(--border);
             position: relative;
-            overflow: hidden;
         }
 
         .receipt::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--success), var(--accent));
+            left: 20px;
+            right: 20px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            border-radius: 2px;
         }
 
         .receipt-header {
             text-align: center;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
         }
 
         .receipt-header h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
+            color: var(--text);
         }
 
         .receipt-month {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
+            color: white;
         }
 
         .receipt-section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .receipt-section h4 {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-light);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .receipt-section h4::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+            color: var(--accent);
+            margin-bottom: 10px;
         }
 
         .receipt-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 6px 0;
+            font-size: 13px;
         }
 
         .receipt-row .label {
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .receipt-row .value {
             font-weight: 600;
+            color: var(--text);
         }
 
         .receipt-total {
             display: flex;
             justify-content: space-between;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--accent), #c73e54);
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 14px;
-            margin-top: 20px;
-            font-size: 18px;
+            margin-top: 16px;
+            font-size: 16px;
             font-weight: 700;
+            color: white;
         }
 
         .receipt-footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .history-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .history-item {
-            background: var(--card-bg-light);
+            background: var(--surface-elevated);
             border-radius: 14px;
-            padding: 18px;
+            padding: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s;
             border: 1px solid transparent;
         }
 
         .history-item:hover {
-            border-color: var(--accent);
+            border-color: var(--primary);
             transform: translateX(4px);
         }
 
@@ -444,27 +576,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .history-item .month {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .history-item .amount {
             font-weight: 700;
             color: var(--success);
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .history-item .details {
             font-size: 12px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .history-item .details span {
-            margin-right: 12px;
+            margin-right: 14px;
         }
 
         .empty-state {
@@ -473,14 +605,14 @@
         }
 
         .empty-state .icon {
-            font-size: 48px;
-            margin-bottom: 16px;
+            font-size: 42px;
+            margin-bottom: 14px;
             opacity: 0.5;
         }
 
         .empty-state p {
-            color: var(--text-secondary);
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 13px;
         }
 
         .hidden {
@@ -493,12 +625,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -511,23 +643,24 @@
         }
 
         .modal {
-            background: var(--card-bg);
+            background: var(--surface);
             border-radius: 24px;
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             max-height: 90vh;
             overflow-y: auto;
-            transform: scale(0.9);
+            transform: scale(0.9) translateY(20px);
             transition: transform 0.3s;
             border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .modal-overlay.active .modal {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
 
         .modal-header {
-            padding: 20px 24px;
+            padding: 18px 20px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -535,43 +668,59 @@
         }
 
         .modal-header h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .modal-close {
             background: none;
             border: none;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 24px;
             cursor: pointer;
             padding: 4px;
             line-height: 1;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--surface-elevated);
+            color: var(--text);
         }
 
         .modal-body {
-            padding: 24px;
+            padding: 20px;
         }
 
         .modal-footer {
-            padding: 16px 24px;
+            padding: 14px 20px;
             border-top: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .toast {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: var(--success);
             color: white;
-            padding: 14px 24px;
+            padding: 12px 24px;
             border-radius: 12px;
             font-weight: 500;
-            box-shadow: 0 10px 30px rgba(0, 217, 165, 0.4);
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
             transition: transform 0.3s;
             z-index: 1001;
         }
@@ -589,6 +738,27 @@
         .settings-grid .form-group:first-child {
             grid-column: span 2;
         }
+
+        .settings-grid .form-group:last-child {
+            grid-column: span 2;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon-wrapper input {
+            padding-left: 40px;
+        }
+
+        .input-icon-wrapper .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
@@ -601,13 +771,22 @@
 
         <div class="app-container">
             <div class="nav-tabs">
-                <button class="nav-tab active" data-tab="entry">New Entry</button>
-                <button class="nav-tab" data-tab="history">History</button>
-                <button class="nav-tab" data-tab="settings">Settings</button>
+                <button class="nav-tab active" data-tab="entry">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    New
+                </button>
+                <button class="nav-tab" data-tab="history">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    History
+                </button>
+                <button class="nav-tab" data-tab="settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Settings
+                </button>
             </div>
 
             <div id="entry" class="tab-content active">
-                <div class="section-title">Monthly Reading</div>
+                <div class="section-label">Monthly Reading</div>
                 
                 <div class="row">
                     <div class="form-group">
@@ -634,8 +813,23 @@
                 </div>
 
                 <div class="info-card">
-                    <div class="label">⚡ Previous Reading</div>
-                    <div class="value" id="prevReadingDisplay">-- units</div>
+                    <div class="info-card-icon">⚡</div>
+                    <div class="info-card-content">
+                        <div class="label">Last Month Reading</div>
+                        <div class="value" id="prevReadingDisplay">-- units</div>
+                    </div>
+                </div>
+
+                <div class="manual-input-toggle" onclick="toggleManualInput()">
+                    <div class="toggle-switch"></div>
+                    <span class="toggle-text">Enter previous reading manually</span>
+                </div>
+
+                <div class="manual-input-section" id="manualInputSection">
+                    <div class="form-group">
+                        <label>Previous Reading (Manual)</label>
+                        <input type="number" id="manualPrevReading" placeholder="Enter previous month reading">
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -644,34 +838,40 @@
                 </div>
 
                 <div class="calculation-card hidden" id="elecCalc">
-                    <div class="title">⚡ Electricity Breakdown</div>
+                    <div class="title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        Electricity Breakdown
+                    </div>
                     <div class="calc-row">
-                        <span class="key">Current Reading</span>
+                        <span class="key">Current</span>
                         <span class="val" id="calcCurrent">0</span>
                     </div>
                     <div class="calc-row">
-                        <span class="key">Previous Reading</span>
+                        <span class="key">Previous</span>
                         <span class="val" id="calcPrev">0</span>
                     </div>
                     <div class="calc-row">
-                        <span class="key">Units Consumed</span>
+                        <span class="key">Units Used</span>
                         <span class="val" id="calcUnits">0</span>
                     </div>
                     <div class="calc-row">
-                        <span class="key">Rate per Unit</span>
+                        <span class="key">Rate/Unit</span>
                         <span class="val" id="calcRate">₹0.00</span>
                     </div>
                     <div class="calc-row total">
-                        <span class="key">Electricity Bill</span>
+                        <span class="key">Total</span>
                         <span class="val" id="calcBill">₹0.00</span>
                     </div>
                 </div>
 
-                <button class="btn" onclick="generateReceipt()">Generate Receipt</button>
+                <button class="btn" onclick="generateReceipt()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                    Generate Receipt
+                </button>
             </div>
 
             <div id="history" class="tab-content">
-                <div class="section-title">Saved Receipts</div>
+                <div class="section-label">Saved Receipts</div>
                 <div id="historyList" class="history-list">
                     <div class="empty-state">
                         <div class="icon">📋</div>
@@ -681,9 +881,9 @@
             </div>
 
             <div id="settings" class="tab-content">
-                <div class="section-title">Fixed Costs</div>
-                <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 20px;">
-                    Configure your monthly charges once
+                <div class="section-label">Fixed Costs</div>
+                <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 16px;">
+                    Set your monthly charges once
                 </p>
                 
                 <div class="settings-grid">
@@ -725,7 +925,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="saveToHistory()">Save Receipt</button>
-                <button class="btn btn-secondary" onclick="shareReceipt()">Share</button>
+                <button class="btn btn-secondary" onclick="shareReceipt()">Share Receipt</button>
             </div>
         </div>
     </div>
@@ -735,6 +935,8 @@
     <script>
         let currentReceipt = null;
         let viewingHistoryIndex = null;
+        let manualMode = false;
+        let manualPrevReading = 0;
 
         // Initialize
         const currentYear = new Date().getFullYear();
@@ -769,6 +971,27 @@
             });
 
             document.getElementById('currentReading').addEventListener('input', calculateElectricity);
+            document.getElementById('manualPrevReading').addEventListener('input', function() {
+                manualPrevReading = parseFloat(this.value) || 0;
+                calculateElectricity();
+            });
+        }
+
+        function toggleManualInput() {
+            const toggle = document.querySelector('.manual-input-toggle');
+            const section = document.getElementById('manualInputSection');
+            manualMode = !manualMode;
+            
+            if (manualMode) {
+                toggle.classList.add('active');
+                section.classList.add('show');
+                document.getElementById('manualPrevReading').focus();
+            } else {
+                toggle.classList.remove('active');
+                section.classList.remove('show');
+                manualPrevReading = 0;
+            }
+            calculateElectricity();
         }
 
         function showToast(message) {
@@ -806,26 +1029,19 @@
 
         function calculateElectricity() {
             const currentReading = parseFloat(document.getElementById('currentReading').value) || 0;
-            const previousReading = parseFloat(localStorage.getItem('previousReading')) || 0;
+            let previousReading = manualMode ? manualPrevReading : (parseFloat(localStorage.getItem('previousReading')) || 0);
             const rate = parseFloat(document.getElementById('elecRate').value) || 0;
             
             const unitsConsumed = Math.max(0, currentReading - previousReading);
             const electricityBill = unitsConsumed * rate;
 
-            if (currentReading > 0 && previousReading > 0) {
+            if (currentReading > 0) {
                 document.getElementById('elecCalc').classList.remove('hidden');
                 document.getElementById('calcCurrent').textContent = currentReading + ' units';
                 document.getElementById('calcPrev').textContent = previousReading + ' units';
                 document.getElementById('calcUnits').textContent = unitsConsumed + ' units';
                 document.getElementById('calcRate').textContent = '₹' + rate.toFixed(2);
                 document.getElementById('calcBill').textContent = '₹' + electricityBill.toFixed(2);
-            } else if (currentReading > 0) {
-                document.getElementById('calcCurrent').textContent = currentReading + ' units';
-                document.getElementById('calcPrev').textContent = '0 (set in settings)';
-                document.getElementById('calcUnits').textContent = currentReading + ' units';
-                document.getElementById('calcRate').textContent = '₹' + rate.toFixed(2);
-                document.getElementById('calcBill').textContent = '₹' + (currentReading * rate).toFixed(2);
-                document.getElementById('elecCalc').classList.remove('hidden');
             } else {
                 document.getElementById('elecCalc').classList.add('hidden');
             }
@@ -843,7 +1059,7 @@
             const month = document.getElementById('month').value;
             const year = document.getElementById('year').value;
             const currentReading = parseFloat(document.getElementById('currentReading').value) || 0;
-            const previousReading = parseFloat(localStorage.getItem('previousReading')) || 0;
+            let previousReading = manualMode ? manualPrevReading : (parseFloat(localStorage.getItem('previousReading')) || 0);
             const unitsConsumed = Math.max(0, currentReading - previousReading);
             const electricityBill = unitsConsumed * (settings.elecRate || 0);
             
@@ -855,7 +1071,7 @@
                 year,
                 date: new Date().toLocaleDateString(),
                 settings: settings,
-                previousReading: previousReading || 0,
+                previousReading,
                 currentReading,
                 unitsConsumed,
                 electricityBill,
@@ -892,14 +1108,14 @@
                     <h4>Electricity</h4>
                     <div class="receipt-row">
                         <span class="label">Previous Reading</span>
-                        <span class="value">${previousReading || 0} units</span>
+                        <span class="value">${previousReading} units</span>
                     </div>
                     <div class="receipt-row">
                         <span class="label">Current Reading</span>
                         <span class="value">${currentReading} units</span>
                     </div>
                     <div class="receipt-row">
-                        <span class="label">Units Consumed</span>
+                        <span class="label">Units Used</span>
                         <span class="value">${unitsConsumed} units</span>
                     </div>
                     <div class="receipt-row">
@@ -936,7 +1152,10 @@
             let history = JSON.parse(localStorage.getItem('receiptHistory')) || [];
             history.unshift(currentReceipt);
             localStorage.setItem('receiptHistory', JSON.stringify(history));
-            localStorage.setItem('previousReading', currentReceipt.currentReading);
+            
+            if (!manualMode) {
+                localStorage.setItem('previousReading', currentReceipt.currentReading);
+            }
 
             showToast('Receipt saved!');
             closeReceipt();
@@ -1014,7 +1233,7 @@
                         <span class="value">${r.currentReading} units</span>
                     </div>
                     <div class="receipt-row">
-                        <span class="label">Units Consumed</span>
+                        <span class="label">Units Used</span>
                         <span class="value">${r.unitsConsumed} units</span>
                     </div>
                     <div class="receipt-row">
@@ -1066,12 +1285,10 @@ Units: ${r.unitsConsumed} × ₹${r.settings.elecRate} = ₹${r.electricityBill.
             }
         }
 
-        // Close modal on overlay click
         document.getElementById('receiptModal').addEventListener('click', (e) => {
             if (e.target.id === 'receiptModal') closeReceipt();
         });
 
-        // Register service worker for PWA
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
                 .then(() => console.log('Service Worker registered'))
