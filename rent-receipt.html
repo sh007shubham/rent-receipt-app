@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
             --bg: #0a0a0f;
@@ -288,6 +289,29 @@
         .btn-secondary:hover {
             background: var(--surface-hover);
             box-shadow: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-row .btn {
+            flex: 1;
+            margin-top: 0;
         }
 
         .info-card {
@@ -925,7 +949,13 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="saveToHistory()">Save Receipt</button>
-                <button class="btn btn-secondary" onclick="shareReceipt()">Share Receipt</button>
+                <div class="btn-row">
+                    <button class="btn btn-outline" onclick="downloadPDF()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Download PDF
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareReceipt()">Share Receipt</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1261,6 +1291,280 @@
             document.getElementById('receiptModal').classList.remove('active');
         }
 
+        function generatePDF(receipt) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+            const r = receipt;
+            const pageWidth = 210;
+            const margin = 25;
+            const contentWidth = pageWidth - margin * 2;
+            let y = 20;
+
+            // Top gradient bar (simulated with a thick line)
+            doc.setFillColor(99, 102, 241);
+            doc.rect(margin, y, contentWidth, 4, 'F');
+            y += 12;
+
+            // Title
+            doc.setFontSize(24);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(248, 250, 252);
+            doc.text('RENT RECEIPT', pageWidth / 2, y, { align: 'center' });
+            y += 10;
+
+            // Month badge
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            const monthText = `${r.month} ${r.year}`;
+            const badgeWidth = doc.getTextWidth(monthText) + 16;
+            doc.setFillColor(99, 102, 241);
+            doc.roundedRect((pageWidth - badgeWidth) / 2, y - 5, badgeWidth, 9, 4, 4, 'F');
+            doc.text(monthText, pageWidth / 2, y, { align: 'center' });
+            y += 14;
+
+            // Divider
+            doc.setDrawColor(46, 46, 58);
+            doc.setLineWidth(0.5);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // Section: Fixed Charges
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(34, 211, 238);
+            doc.text('FIXED CHARGES', margin, y);
+            y += 8;
+
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(148, 163, 184);
+            const fixedItems = [
+                ['Base Rent', `Rs. ${r.settings.baseRent.toLocaleString()}`],
+                ['Water Charges', `Rs. ${r.settings.waterCharges.toLocaleString()}`],
+                ['Maintenance', `Rs. ${r.settings.maintenanceFee.toLocaleString()}`],
+                ['Other Charges', `Rs. ${r.settings.otherCharges.toLocaleString()}`]
+            ];
+
+            fixedItems.forEach(([label, value]) => {
+                doc.setTextColor(148, 163, 184);
+                doc.text(label, margin, y);
+                doc.setTextColor(248, 250, 252);
+                doc.setFont('helvetica', 'bold');
+                doc.text(value, pageWidth - margin, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 7;
+            });
+            y += 4;
+
+            // Divider
+            doc.setDrawColor(46, 46, 58);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // Section: Electricity
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(34, 211, 238);
+            doc.text('ELECTRICITY', margin, y);
+            y += 8;
+
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            const elecItems = [
+                ['Previous Reading', `${r.previousReading} units`],
+                ['Current Reading', `${r.currentReading} units`],
+                ['Units Used', `${r.unitsConsumed} units`],
+                ['Rate per Unit', `Rs. ${r.settings.elecRate.toFixed(2)}`],
+                ['Electricity Bill', `Rs. ${r.electricityBill.toFixed(2)}`]
+            ];
+
+            elecItems.forEach(([label, value]) => {
+                doc.setTextColor(148, 163, 184);
+                doc.text(label, margin, y);
+                doc.setTextColor(248, 250, 252);
+                doc.setFont('helvetica', 'bold');
+                doc.text(value, pageWidth - margin, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 7;
+            });
+            y += 6;
+
+            // Total banner
+            doc.setFillColor(99, 102, 241);
+            doc.roundedRect(margin, y, contentWidth, 14, 3, 3, 'F');
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text('TOTAL', margin + 6, y + 9);
+            doc.text(`Rs. ${r.totalRent.toLocaleString()}`, pageWidth - margin - 6, y + 9, { align: 'right' });
+            y += 22;
+
+            // Footer
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(100, 116, 139);
+            const genDate = new Date().toLocaleDateString('en-IN', { 
+                day: 'numeric', month: 'short', year: 'numeric', 
+                hour: '2-digit', minute: '2-digit' 
+            });
+            doc.text(`Generated on ${genDate}`, pageWidth / 2, y, { align: 'center' });
+
+            return doc.output('blob');
+        }
+
+        function downloadPDF() {
+            if (!currentReceipt) return;
+
+            const blob = generatePDF(currentReceipt);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Rent-Receipt-${currentReceipt.month}-${currentReceipt.year}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('PDF downloaded!');
+        }
+
+        function generatePDF(receipt) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+            const r = receipt;
+            const pageWidth = 210;
+            const margin = 25;
+            const contentWidth = pageWidth - margin * 2;
+            let y = 20;
+
+            // Top gradient bar (simulated with a thick line)
+            doc.setFillColor(99, 102, 241);
+            doc.rect(margin, y, contentWidth, 4, 'F');
+            y += 12;
+
+            // Title
+            doc.setFontSize(24);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(248, 250, 252);
+            doc.text('RENT RECEIPT', pageWidth / 2, y, { align: 'center' });
+            y += 10;
+
+            // Month badge
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            const monthText = `${r.month} ${r.year}`;
+            const badgeWidth = doc.getTextWidth(monthText) + 16;
+            doc.setFillColor(99, 102, 241);
+            doc.roundedRect((pageWidth - badgeWidth) / 2, y - 5, badgeWidth, 9, 4, 4, 'F');
+            doc.text(monthText, pageWidth / 2, y, { align: 'center' });
+            y += 14;
+
+            // Divider
+            doc.setDrawColor(46, 46, 58);
+            doc.setLineWidth(0.5);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // Section: Fixed Charges
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(34, 211, 238);
+            doc.text('FIXED CHARGES', margin, y);
+            y += 8;
+
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(148, 163, 184);
+            const fixedItems = [
+                ['Base Rent', `Rs. ${r.settings.baseRent.toLocaleString()}`],
+                ['Water Charges', `Rs. ${r.settings.waterCharges.toLocaleString()}`],
+                ['Maintenance', `Rs. ${r.settings.maintenanceFee.toLocaleString()}`],
+                ['Other Charges', `Rs. ${r.settings.otherCharges.toLocaleString()}`]
+            ];
+
+            fixedItems.forEach(([label, value]) => {
+                doc.setTextColor(148, 163, 184);
+                doc.text(label, margin, y);
+                doc.setTextColor(248, 250, 252);
+                doc.setFont('helvetica', 'bold');
+                doc.text(value, pageWidth - margin, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 7;
+            });
+            y += 4;
+
+            // Divider
+            doc.setDrawColor(46, 46, 58);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // Section: Electricity
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(34, 211, 238);
+            doc.text('ELECTRICITY', margin, y);
+            y += 8;
+
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            const elecItems = [
+                ['Previous Reading', `${r.previousReading} units`],
+                ['Current Reading', `${r.currentReading} units`],
+                ['Units Used', `${r.unitsConsumed} units`],
+                ['Rate per Unit', `Rs. ${r.settings.elecRate.toFixed(2)}`],
+                ['Electricity Bill', `Rs. ${r.electricityBill.toFixed(2)}`]
+            ];
+
+            elecItems.forEach(([label, value]) => {
+                doc.setTextColor(148, 163, 184);
+                doc.text(label, margin, y);
+                doc.setTextColor(248, 250, 252);
+                doc.setFont('helvetica', 'bold');
+                doc.text(value, pageWidth - margin, y, { align: 'right' });
+                doc.setFont('helvetica', 'normal');
+                y += 7;
+            });
+            y += 6;
+
+            // Total banner
+            doc.setFillColor(99, 102, 241);
+            doc.roundedRect(margin, y, contentWidth, 14, 3, 3, 'F');
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text('TOTAL', margin + 6, y + 9);
+            doc.text(`Rs. ${r.totalRent.toLocaleString()}`, pageWidth - margin - 6, y + 9, { align: 'right' });
+            y += 22;
+
+            // Footer
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(100, 116, 139);
+            const genDate = new Date().toLocaleDateString('en-IN', { 
+                day: 'numeric', month: 'short', year: 'numeric', 
+                hour: '2-digit', minute: '2-digit' 
+            });
+            doc.text(`Generated on ${genDate}`, pageWidth / 2, y, { align: 'center' });
+
+            return doc.output('blob');
+        }
+
+        function downloadPDF() {
+            if (!currentReceipt) return;
+
+            const blob = generatePDF(currentReceipt);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Rent-Receipt-${currentReceipt.month}-${currentReceipt.year}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('PDF downloaded!');
+        }
+
         function shareReceipt() {
             const r = currentReceipt;
             const text = `
@@ -1278,10 +1582,37 @@ Units: ${r.unitsConsumed} × ₹${r.settings.elecRate} = ₹${r.electricityBill.
 💰 TOTAL: ₹${r.totalRent.toLocaleString()}
             `.trim();
 
+            const pdfBlob = generatePDF(r);
+            const pdfFile = new File([pdfBlob], `Rent-Receipt-${r.month}-${r.year}.pdf`, { type: 'application/pdf' });
+
             if (navigator.share) {
-                navigator.share({ title: `Rent Receipt - ${r.month} ${r.year}`, text });
+                if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+                    navigator.share({ title: `Rent Receipt - ${r.month} ${r.year}`, text, files: [pdfFile] });
+                } else {
+                    navigator.share({ title: `Rent Receipt - ${r.month} ${r.year}`, text });
+                }
             } else {
-                navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!'));
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Rent-Receipt-${r.month}-${r.year}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                navigator.clipboard.writeText(text).then(() => showToast('PDF downloaded & text copied!'));
+            }
+        }
+            } else {
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Rent-Receipt-${r.month}-${r.year}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                navigator.clipboard.writeText(text).then(() => showToast('PDF downloaded & text copied!'));
             }
         }
 
