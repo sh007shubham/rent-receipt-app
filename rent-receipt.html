@@ -867,6 +867,12 @@
         .tenant-card .tenant-name { font-weight: 600; font-size: 15px; }
         .tenant-card .tenant-flat { font-size: 12px; color: var(--accent); }
         .tenant-card .tenant-phone { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .tenant-card .tenant-deposit { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .tenant-card .tenant-deposit .dep-amount { font-weight: 600; color: var(--warning); }
+        .tenant-card .tenant-deposit.dep-returned { color: var(--success); }
+        .tenant-card .tenant-deposit.dep-returned .dep-amount { color: var(--success); }
+        .tenant-card .tenant-deposit.dep-partial { color: var(--warning); }
+        .tenant-card .tenant-deposit.dep-details { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
         .tenant-card .tenant-rent { font-weight: 700; color: var(--success); font-size: 14px; }
 
         .tenant-card .tenant-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
@@ -1353,16 +1359,17 @@
                         tSnap.forEach(doc => existingTIds.add(doc.id));
 
                         b.tenants.forEach(t => {
-                            batch.set(tenantsRef.doc(t.id), {
-                                name: t.name,
-                                phone: t.phone || '',
-                                flatUnit: t.flatUnit || '',
-                                archived: t.archived || false,
-                                movedOutDate: t.movedOutDate || null,
-                                settings: t.settings || {},
-                                previousReading: t.previousReading || 0,
-                                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                            });
+                        batch.set(tenantsRef.doc(t.id), {
+                            name: t.name,
+                            phone: t.phone || '',
+                            flatUnit: t.flatUnit || '',
+                            archived: t.archived || false,
+                            movedOutDate: t.movedOutDate || null,
+                            settings: t.settings || {},
+                            previousReading: t.previousReading || 0,
+                            securityDeposit: t.securityDeposit || null,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
                             existingTIds.delete(t.id);
                         });
 
@@ -1599,6 +1606,7 @@
                             movedOutDate: t.movedOutDate || null,
                             settings: t.settings || {},
                             previousReading: t.previousReading || 0,
+                            securityDeposit: t.securityDeposit || null,
                             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                         });
                     });
@@ -1878,6 +1886,23 @@
                 html += active.map(t => {
                     const monthlyRent = getTenantMonthlyRent(t);
                     const tenantHistory = history.filter(r => r.tenantId === t.id);
+                    const dep = t.securityDeposit;
+                    let depHTML = '';
+                    if (dep && dep.amount) {
+                        if (dep.status === 'returned') {
+                            const rd = dep.returnDetails || {};
+                            depHTML = `<div class="tenant-deposit dep-returned">✅ Deposit: <span class="dep-amount">₹${dep.amount.toLocaleString()}</span> · Returned ${rd.dateReturned || ''}</div>
+                                <div class="tenant-deposit dep-details">₹${(rd.amountReturned || dep.amount).toLocaleString()} returned${rd.deductionAmount ? ' · ₹' + rd.deductionAmount.toLocaleString() + ' deducted' : ''}${rd.paymentMethod ? ' · ' + rd.paymentMethod : ''}</div>`;
+                        } else if (dep.status === 'partially_returned') {
+                            const rd = dep.returnDetails || {};
+                            depHTML = `<div class="tenant-deposit dep-partial">⚠️ Deposit: <span class="dep-amount">₹${dep.amount.toLocaleString()}</span> → ₹${(rd.amountReturned || 0).toLocaleString()} returned</div>
+                                <div class="tenant-deposit dep-details">₹${(rd.deductionAmount || 0).toLocaleString()} deducted${rd.deductionReason ? ' · ' + rd.deductionReason : ''}</div>`;
+                        } else {
+                            depHTML = `<div class="tenant-deposit">🔒 Deposit: <span class="dep-amount">₹${dep.amount.toLocaleString()}</span> · ${dep.dateGiven || ''}</div>`;
+                        }
+                    } else {
+                        depHTML = `<div class="tenant-deposit" style="opacity:0.4">No deposit recorded</div>`;
+                    }
                     return `
                         <div class="tenant-card">
                             <div class="tenant-top">
@@ -1885,11 +1910,13 @@
                                     <div class="tenant-name">${t.name}</div>
                                     <div class="tenant-flat">${t.flatUnit || 'No flat assigned'}</div>
                                     ${t.phone ? `<div class="tenant-phone">📱 ${t.phone}</div>` : ''}
+                                    ${depHTML}
                                 </div>
                                 <div class="tenant-rent">₹${monthlyRent.toLocaleString()}/mo</div>
                             </div>
                             <div class="tenant-actions">
                                 <button onclick="openEditTenantModal('${buildingId}','${t.id}')">Edit</button>
+                                ${dep && dep.amount && dep.status === 'given' ? `<button onclick="openReturnDepositModal('${buildingId}','${t.id}')">Return Deposit</button>` : ''}
                                 <button onclick="markMovedOut('${buildingId}','${t.id}')">Move Out</button>
                                 ${tenantHistory.length > 0 ? `<button onclick="viewTenantHistory('${buildingId}','${t.id}')">History (${tenantHistory.length})</button>` : ''}
                                 <button class="danger" onclick="confirmDeleteTenant('${buildingId}','${t.id}')">Delete</button>
@@ -2031,6 +2058,8 @@
 
         function tenantFormHTML(tenant) {
             const s = tenant ? tenant.settings : {};
+            const dep = tenant ? (tenant.securityDeposit || {}) : {};
+            const hasDep = dep && dep.amount;
             return `
                 <div class="form-group">
                     <label>Tenant Name</label>
@@ -2066,6 +2095,17 @@
                         <label>Electricity Rate per Unit (₹)</label>
                         <input type="number" id="tElecRate" value="${s.elecRate || ''}" placeholder="e.g., 8.50" step="0.01">
                     </div>
+                </div>
+                <div class="section-divider" style="margin-top:20px;">Security Deposit</div>
+                <div class="settings-grid">
+                    <div class="form-group">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="depAmount" value="${dep.amount || ''}" placeholder="e.g., 15000">
+                    </div>
+                    <div class="form-group">
+                        <label>Date Given</label>
+                        <input type="text" id="depDateGiven" value="${dep.dateGiven || ''}" placeholder="e.g., 15 Mar 2026">
+                    </div>
                 </div>`;
         }
 
@@ -2096,6 +2136,8 @@
                 otherCharges: parseFloat(document.getElementById('tOtherCharges').value) || 0,
                 elecRate: parseFloat(document.getElementById('tElecRate').value) || 0
             };
+            const depAmount = parseFloat(document.getElementById('depAmount').value) || 0;
+            const depDateGiven = document.getElementById('depDateGiven').value.trim();
 
             if (!name) { showToast('Please enter tenant name'); return; }
 
@@ -2104,15 +2146,36 @@
             if (bIdx === -1) return;
 
             if (editingTenantId) {
-                buildings[bIdx].tenants = buildings[bIdx].tenants.map(t =>
-                    t.id === editingTenantId ? { ...t, name, phone, flatUnit: flat, settings } : t
-                );
+                buildings[bIdx].tenants = buildings[bIdx].tenants.map(t => {
+                    if (t.id !== editingTenantId) return t;
+                    const updated = { ...t, name, phone, flatUnit: flat, settings };
+                    if (depAmount) {
+                        updated.securityDeposit = {
+                            amount: depAmount,
+                            dateGiven: depDateGiven,
+                            status: t.securityDeposit && t.securityDeposit.status !== 'given' ? t.securityDeposit.status : 'given',
+                            returnDetails: t.securityDeposit ? t.securityDeposit.returnDetails : null
+                        };
+                    } else {
+                        updated.securityDeposit = null;
+                    }
+                    return updated;
+                });
             } else {
-                buildings[bIdx].tenants.push({
+                const newTenant = {
                     id: genId(), name, phone, flatUnit: flat,
                     archived: false, movedOutDate: null,
                     settings, previousReading: 0
-                });
+                };
+                if (depAmount) {
+                    newTenant.securityDeposit = {
+                        amount: depAmount,
+                        dateGiven: depDateGiven,
+                        status: 'given',
+                        returnDetails: null
+                    };
+                }
+                buildings[bIdx].tenants.push(newTenant);
             }
 
             saveBuildings(buildings);
@@ -2208,6 +2271,103 @@
                 document.getElementById('filterTenant').value = tenantId;
                 renderHistory();
             }, 100);
+        }
+
+        function openReturnDepositModal(buildingId, tenantId) {
+            const t = findTenant(buildingId, tenantId);
+            if (!t || !t.securityDeposit || !t.securityDeposit.amount) return;
+            const dep = t.securityDeposit;
+            const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            openGenericModal('Return Security Deposit', `
+                <div class="info-card" style="margin-bottom:16px;">
+                    <div class="info-card-icon">🔒</div>
+                    <div class="info-card-content">
+                        <div class="label">Deposit Amount</div>
+                        <div class="value">₹${dep.amount.toLocaleString()}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Date Returned</label>
+                        <input type="text" id="retDateReturned" value="${today}" placeholder="e.g., 15 Mar 2027">
+                    </div>
+                    <div class="form-group">
+                        <label>Amount Returned (₹)</label>
+                        <input type="number" id="retAmountReturned" value="${dep.amount}" placeholder="e.g., 15000">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Deduction (₹)</label>
+                        <input type="number" id="retDeduction" value="0" placeholder="e.g., 3000">
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select id="retPaymentMethod">
+                            <option value="Cash">Cash</option>
+                            <option value="Bank Transfer" selected>Bank Transfer</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Deduction Reason</label>
+                    <input type="text" id="retDeductionReason" placeholder="e.g., Wall paint damage">
+                </div>
+                <div class="form-group">
+                    <label>Notes (optional)</label>
+                    <input type="text" id="retNotes" placeholder="e.g., ₹3000 deducted for repainting">
+                </div>`,
+                `<div class="btn-row">
+                    <button class="btn btn-secondary" onclick="closeGenericModal()">Cancel</button>
+                    <button class="btn" onclick="saveReturnDeposit('${buildingId}','${tenantId}')">Record Return</button>
+                </div>`
+            );
+
+            document.getElementById('retAmountReturned').addEventListener('input', function() {
+                const returned = parseFloat(this.value) || 0;
+                const deduction = dep.amount - returned;
+                document.getElementById('retDeduction').value = Math.max(0, deduction);
+            });
+        }
+
+        function saveReturnDeposit(buildingId, tenantId) {
+            const dateReturned = document.getElementById('retDateReturned').value.trim();
+            const amountReturned = parseFloat(document.getElementById('retAmountReturned').value) || 0;
+            const deductionAmount = parseFloat(document.getElementById('retDeduction').value) || 0;
+            const paymentMethod = document.getElementById('retPaymentMethod').value;
+            const deductionReason = document.getElementById('retDeductionReason').value.trim();
+            const notes = document.getElementById('retNotes').value.trim();
+
+            if (!dateReturned) { showToast('Please enter the return date'); return; }
+
+            let buildings = getBuildings();
+            const bIdx = buildings.findIndex(b => b.id === buildingId);
+            if (bIdx === -1) return;
+            const tIdx = buildings[bIdx].tenants.findIndex(t => t.id === tenantId);
+            if (tIdx === -1) return;
+
+            const status = deductionAmount > 0 ? 'partially_returned' : 'returned';
+
+            buildings[bIdx].tenants[tIdx].securityDeposit = {
+                ...buildings[bIdx].tenants[tIdx].securityDeposit,
+                status,
+                returnDetails: {
+                    dateReturned,
+                    amountReturned,
+                    deductionAmount,
+                    deductionReason,
+                    paymentMethod,
+                    notes
+                }
+            };
+
+            saveBuildings(buildings);
+            closeGenericModal();
+            renderTenantList(buildingId);
+            showToast('Deposit return recorded!');
         }
 
         // ==================== SELECTORS ====================
