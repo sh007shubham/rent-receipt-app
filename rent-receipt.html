@@ -36,11 +36,7 @@
             --glow: 0 0 40px rgba(99, 102, 241, 0.15);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,10 +49,7 @@
                 radial-gradient(ellipse at bottom right, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
         }
 
-        .container {
-            max-width: 440px;
-            margin: 0 auto;
-        }
+        .container { max-width: 440px; margin: 0 auto; }
 
         .header {
             text-align: center;
@@ -88,11 +81,7 @@
             background-clip: text;
         }
 
-        .header p {
-            color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 400;
-        }
+        .header p { color: var(--text-muted); font-size: 13px; font-weight: 400; }
 
         .app-container {
             background: var(--surface);
@@ -128,11 +117,7 @@
             gap: 6px;
         }
 
-        .nav-tab svg {
-            width: 16px;
-            height: 16px;
-            opacity: 0.7;
-        }
+        .nav-tab svg { width: 16px; height: 16px; opacity: 0.7; }
 
         .nav-tab.active {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -141,9 +126,7 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
 
-        .nav-tab.active svg {
-            opacity: 1;
-        }
+        .nav-tab.active svg { opacity: 1; }
 
         .nav-tab:hover:not(.active) {
             background: var(--surface-hover);
@@ -156,9 +139,7 @@
             animation: fadeIn 0.3s ease;
         }
 
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
@@ -185,9 +166,7 @@
             border-radius: 2px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; }
 
         .form-group label {
             display: flex;
@@ -218,9 +197,7 @@
             font-weight: 500;
         }
 
-        .form-group input::placeholder {
-            color: var(--text-muted);
-        }
+        .form-group input::placeholder { color: var(--text-muted); }
 
         .form-group input:focus, .form-group select:focus {
             outline: none;
@@ -236,19 +213,10 @@
             background-position: right 14px center;
         }
 
-        .form-group select option {
-            background: var(--surface);
-            color: var(--text);
-        }
+        .form-group select option { background: var(--surface); color: var(--text); }
 
-        .row {
-            display: flex;
-            gap: 12px;
-        }
-
-        .row .form-group {
-            flex: 1;
-        }
+        .row { display: flex; gap: 12px; }
+        .row .form-group { flex: 1; }
 
         .btn {
             width: 100%;
@@ -274,9 +242,7 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
 
-        .btn:active {
-            transform: translateY(0);
-        }
+        .btn:active { transform: translateY(0); }
 
         .btn-secondary {
             background: var(--surface-elevated);
@@ -286,10 +252,7 @@
             box-shadow: none;
         }
 
-        .btn-secondary:hover {
-            background: var(--surface-hover);
-            box-shadow: none;
-        }
+        .btn-secondary:hover { background: var(--surface-hover); box-shadow: none; }
 
         .btn-outline {
             background: transparent;
@@ -304,15 +267,26 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .btn-row {
-            display: flex;
-            gap: 10px;
+        .btn-danger {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            box-shadow: none;
         }
 
-        .btn-row .btn {
-            flex: 1;
-            margin-top: 0;
+        .btn-danger:hover {
+            background: var(--danger);
+            color: white;
         }
+
+        .btn-sm {
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 10px;
+        }
+
+        .btn-row { display: flex; gap: 10px; }
+        .btn-row .btn { flex: 1; margin-top: 0; }
 
         .info-card {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.05));
@@ -336,21 +310,9 @@
             font-size: 18px;
         }
 
-        .info-card-content {
-            flex: 1;
-        }
-
-        .info-card .label {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 2px;
-        }
-
-        .info-card .value {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--accent);
-        }
+        .info-card-content { flex: 1; }
+        .info-card .label { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+        .info-card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
 
         .manual-input-toggle {
             display: flex;
@@ -365,9 +327,7 @@
             transition: all 0.2s;
         }
 
-        .manual-input-toggle:hover {
-            border-color: var(--primary);
-        }
+        .manual-input-toggle:hover { border-color: var(--primary); }
 
         .manual-input-toggle.active {
             border-color: var(--primary);
@@ -396,20 +356,10 @@
             transition: all 0.2s;
         }
 
-        .manual-input-toggle.active .toggle-switch {
-            background: var(--primary);
-        }
+        .manual-input-toggle.active .toggle-switch { background: var(--primary); }
+        .manual-input-toggle.active .toggle-switch::after { left: 18px; background: white; }
 
-        .manual-input-toggle.active .toggle-switch::after {
-            left: 18px;
-            background: white;
-        }
-
-        .toggle-text {
-            font-size: 13px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+        .toggle-text { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 
         .manual-input-section {
             display: none;
@@ -420,10 +370,7 @@
             border: 1px dashed var(--border);
         }
 
-        .manual-input-section.show {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
+        .manual-input-section.show { display: block; animation: fadeIn 0.3s ease; }
 
         .calculation-card {
             background: var(--surface-elevated);
@@ -443,9 +390,7 @@
             color: var(--text);
         }
 
-        .calculation-card .title svg {
-            color: var(--accent);
-        }
+        .calculation-card .title svg { color: var(--accent); }
 
         .calc-row {
             display: flex;
@@ -455,18 +400,9 @@
             font-size: 13px;
         }
 
-        .calc-row:last-child {
-            border-bottom: none;
-        }
-
-        .calc-row .key {
-            color: var(--text-muted);
-        }
-
-        .calc-row .val {
-            font-weight: 600;
-            color: var(--text);
-        }
+        .calc-row:last-child { border-bottom: none; }
+        .calc-row .key { color: var(--text-muted); }
+        .calc-row .val { font-weight: 600; color: var(--text); }
 
         .calc-row.total {
             margin-top: 10px;
@@ -475,15 +411,8 @@
             font-size: 14px;
         }
 
-        .calc-row.total .key {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .calc-row.total .val {
-            color: var(--success);
-            font-size: 17px;
-        }
+        .calc-row.total .key { color: var(--text); font-weight: 600; }
+        .calc-row.total .val { color: var(--success); font-size: 17px; }
 
         .receipt {
             background: var(--surface-elevated);
@@ -511,12 +440,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .receipt-header h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
+        .receipt-header h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
 
         .receipt-month {
             display: inline-block;
@@ -528,9 +452,18 @@
             color: white;
         }
 
-        .receipt-section {
+        .receipt-tenant-info {
+            text-align: center;
             margin-bottom: 16px;
+            padding: 10px;
+            background: rgba(99, 102, 241, 0.08);
+            border-radius: 10px;
         }
+
+        .receipt-tenant-info .name { font-size: 15px; font-weight: 600; color: var(--text); }
+        .receipt-tenant-info .detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        .receipt-section { margin-bottom: 16px; }
 
         .receipt-section h4 {
             font-size: 11px;
@@ -548,14 +481,8 @@
             font-size: 13px;
         }
 
-        .receipt-row .label {
-            color: var(--text-muted);
-        }
-
-        .receipt-row .value {
-            font-weight: 600;
-            color: var(--text);
-        }
+        .receipt-row .label { color: var(--text-muted); }
+        .receipt-row .value { font-weight: 600; color: var(--text); }
 
         .receipt-total {
             display: flex;
@@ -576,11 +503,7 @@
             color: var(--text-muted);
         }
 
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .history-list { display: flex; flex-direction: column; gap: 10px; }
 
         .history-item {
             background: var(--surface-elevated);
@@ -591,10 +514,7 @@
             border: 1px solid transparent;
         }
 
-        .history-item:hover {
-            border-color: var(--primary);
-            transform: translateX(4px);
-        }
+        .history-item:hover { border-color: var(--primary); transform: translateX(4px); }
 
         .history-item .top {
             display: flex;
@@ -603,45 +523,17 @@
             margin-bottom: 6px;
         }
 
-        .history-item .month {
-            font-weight: 600;
-            font-size: 14px;
-        }
+        .history-item .month { font-weight: 600; font-size: 14px; }
+        .history-item .amount { font-weight: 700; color: var(--success); font-size: 15px; }
 
-        .history-item .amount {
-            font-weight: 700;
-            color: var(--success);
-            font-size: 15px;
-        }
+        .history-item .details { font-size: 12px; color: var(--text-muted); }
+        .history-item .details span { margin-right: 14px; }
 
-        .history-item .details {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
+        .empty-state { text-align: center; padding: 40px 20px; }
+        .empty-state .icon { font-size: 42px; margin-bottom: 14px; opacity: 0.5; }
+        .empty-state p { color: var(--text-muted); font-size: 13px; }
 
-        .history-item .details span {
-            margin-right: 14px;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .empty-state .icon {
-            font-size: 42px;
-            margin-bottom: 14px;
-            opacity: 0.5;
-        }
-
-        .empty-state p {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
 
         .modal-overlay {
             position: fixed;
@@ -661,10 +553,7 @@
             transition: all 0.3s;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
 
         .modal {
             background: var(--surface);
@@ -679,9 +568,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .modal-overlay.active .modal {
-            transform: scale(1) translateY(0);
-        }
+        .modal-overlay.active .modal { transform: scale(1) translateY(0); }
 
         .modal-header {
             padding: 18px 20px;
@@ -716,14 +603,8 @@
             transition: all 0.2s;
         }
 
-        .modal-close:hover {
-            background: var(--surface-elevated);
-            color: var(--text);
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
+        .modal-close:hover { background: var(--surface-elevated); color: var(--text); }
+        .modal-body { padding: 20px; }
 
         .modal-footer {
             padding: 14px 20px;
@@ -749,31 +630,14 @@
             z-index: 1001;
         }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
 
-        .settings-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
+        .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .settings-grid .form-group:first-child { grid-column: span 2; }
+        .settings-grid .form-group:last-child { grid-column: span 2; }
 
-        .settings-grid .form-group:first-child {
-            grid-column: span 2;
-        }
-
-        .settings-grid .form-group:last-child {
-            grid-column: span 2;
-        }
-
-        .input-icon-wrapper {
-            position: relative;
-        }
-
-        .input-icon-wrapper input {
-            padding-left: 40px;
-        }
+        .input-icon-wrapper { position: relative; }
+        .input-icon-wrapper input { padding-left: 40px; }
 
         .input-icon-wrapper .input-icon {
             position: absolute;
@@ -783,6 +647,266 @@
             font-size: 16px;
             opacity: 0.6;
         }
+
+        .dashboard-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(34, 211, 238, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 12px 8px;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-box .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-box .stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .building-card {
+            background: var(--surface-elevated);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.25s;
+            border: 1px solid var(--border);
+        }
+
+        .building-card:hover { border-color: var(--primary); transform: translateX(4px); }
+
+        .building-card .bldg-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .building-card .bldg-name { font-weight: 600; font-size: 15px; }
+        .building-card .bldg-address { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .building-card .bldg-meta { font-size: 12px; color: var(--text-muted); }
+        .building-card .bldg-meta span { margin-right: 14px; }
+        .building-card .bldg-total { font-weight: 700; color: var(--success); font-size: 14px; }
+
+        .building-card .bldg-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .building-card .bldg-actions button {
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .building-card .bldg-actions button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .building-card .bldg-actions button.danger:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .tenant-card {
+            background: var(--surface-elevated);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 10px;
+            transition: all 0.25s;
+            border: 1px solid var(--border);
+        }
+
+        .tenant-card .tenant-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .tenant-card .tenant-name { font-weight: 600; font-size: 15px; }
+        .tenant-card .tenant-flat { font-size: 12px; color: var(--accent); }
+        .tenant-card .tenant-phone { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .tenant-card .tenant-rent { font-weight: 700; color: var(--success); font-size: 14px; }
+
+        .tenant-card .tenant-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tenant-card .tenant-actions button {
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .tenant-card .tenant-actions button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tenant-card .tenant-actions button.danger:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .tenant-card.archived-card { opacity: 0.5; }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 0;
+            margin-bottom: 12px;
+            border: none;
+            background: none;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover { color: var(--primary); }
+
+        .confirm-dialog {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .confirm-dialog .confirm-icon { font-size: 48px; margin-bottom: 12px; }
+        .confirm-dialog .confirm-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .confirm-dialog .confirm-msg { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+
+        .archive-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .moved-out-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .filter-bar select { flex: 1; }
+
+        .migration-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .migration-banner .mig-icon { font-size: 22px; }
+        .migration-banner .mig-text { font-size: 12px; color: var(--text-secondary); }
+        .migration-banner .mig-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 16px 0 12px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .receipt-history-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+            padding: 4px 0;
+        }
+
+        .receipt-history-btn:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -790,12 +914,16 @@
         <div class="header">
             <div class="header-logo">🏠</div>
             <h1>Rent Receipt</h1>
-            <p>Monthly Payment Generator</p>
+            <p>Building & Tenant Manager</p>
         </div>
 
         <div class="app-container">
             <div class="nav-tabs">
-                <button class="nav-tab active" data-tab="entry">
+                <button class="nav-tab active" data-tab="buildings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+                    Buildings
+                </button>
+                <button class="nav-tab" data-tab="entry">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     New
                 </button>
@@ -803,15 +931,37 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     History
                 </button>
-                <button class="nav-tab" data-tab="settings">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
-                    Settings
-                </button>
             </div>
 
-            <div id="entry" class="tab-content active">
-                <div class="section-label">Monthly Reading</div>
-                
+            <div id="buildings" class="tab-content active">
+                <div id="buildingsView">
+                    <div class="section-label">My Properties</div>
+                    <div id="migrationBanner"></div>
+                    <div id="dashboardCard"></div>
+                    <div id="buildingsList"></div>
+                </div>
+                <div id="tenantListView" class="hidden"></div>
+            </div>
+
+            <div id="entry" class="tab-content">
+                <div class="section-label">Generate Receipt</div>
+
+                <div class="form-group">
+                    <label>Building</label>
+                    <select id="entryBuilding" onchange="onEntryBuildingChange()">
+                        <option value="">Select a building...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tenant</label>
+                    <select id="entryTenant" onchange="onEntryTenantChange()">
+                        <option value="">Select a tenant...</option>
+                    </select>
+                </div>
+
+                <div id="entryTenantInfo" class="hidden"></div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Month</label>
@@ -836,7 +986,7 @@
                     </div>
                 </div>
 
-                <div class="info-card">
+                <div class="info-card hidden" id="prevReadingCard">
                     <div class="info-card-icon">⚡</div>
                     <div class="info-card-content">
                         <div class="label">Last Month Reading</div>
@@ -844,7 +994,7 @@
                     </div>
                 </div>
 
-                <div class="manual-input-toggle" onclick="toggleManualInput()">
+                <div class="manual-input-toggle hidden" id="manualToggle" onclick="toggleManualInput()">
                     <div class="toggle-switch"></div>
                     <span class="toggle-text">Enter previous reading manually</span>
                 </div>
@@ -896,44 +1046,20 @@
 
             <div id="history" class="tab-content">
                 <div class="section-label">Saved Receipts</div>
+                <div class="filter-bar">
+                    <select id="filterBuilding" onchange="onFilterBuildingChange()">
+                        <option value="">All Buildings</option>
+                    </select>
+                    <select id="filterTenant" onchange="renderHistory()">
+                        <option value="">All Tenants</option>
+                    </select>
+                </div>
                 <div id="historyList" class="history-list">
                     <div class="empty-state">
                         <div class="icon">📋</div>
                         <p>No receipts yet. Create your first receipt!</p>
                     </div>
                 </div>
-            </div>
-
-            <div id="settings" class="tab-content">
-                <div class="section-label">Fixed Costs</div>
-                <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 16px;">
-                    Set your monthly charges once
-                </p>
-                
-                <div class="settings-grid">
-                    <div class="form-group">
-                        <label>Base Rent (₹)</label>
-                        <input type="number" id="baseRent" placeholder="e.g., 10000">
-                    </div>
-                    <div class="form-group">
-                        <label>Water (₹)</label>
-                        <input type="number" id="waterCharges" placeholder="e.g., 500">
-                    </div>
-                    <div class="form-group">
-                        <label>Maintenance (₹)</label>
-                        <input type="number" id="maintenanceFee" placeholder="e.g., 1000">
-                    </div>
-                    <div class="form-group">
-                        <label>Other (₹)</label>
-                        <input type="number" id="otherCharges" placeholder="e.g., 500">
-                    </div>
-                    <div class="form-group" style="grid-column: span 2;">
-                        <label>Electricity Rate per Unit (₹)</label>
-                        <input type="number" id="elecRate" placeholder="e.g., 8.50" step="0.01">
-                    </div>
-                </div>
-
-                <button class="btn" onclick="saveSettings()">Save Settings</button>
             </div>
         </div>
     </div>
@@ -960,58 +1086,748 @@
         </div>
     </div>
 
-    <div class="toast" id="toast">Settings saved!</div>
+    <div class="modal-overlay" id="genericModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="genericModalTitle">Modal</h3>
+                <button class="modal-close" onclick="closeGenericModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="genericModalBody"></div>
+            <div class="modal-footer" id="genericModalFooter"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Saved!</div>
 
     <script>
         let currentReceipt = null;
         let viewingHistoryIndex = null;
         let manualMode = false;
         let manualPrevReading = 0;
+        let currentViewingBuildingId = null;
+        let editingTenantId = null;
+        let editingBuildingId = null;
 
-        // Initialize
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         const currentYear = new Date().getFullYear();
-        const yearSelect = document.getElementById('year');
-        for (let y = currentYear; y >= currentYear - 5; y--) {
-            const option = document.createElement('option');
-            option.value = y;
-            option.text = y;
-            yearSelect.appendChild(option);
+
+        function genId() { return Date.now().toString(36) + Math.random().toString(36).substr(2, 5); }
+
+        function getBuildings() { return JSON.parse(localStorage.getItem('rr_buildings')) || []; }
+        function saveBuildings(buildings) { localStorage.setItem('rr_buildings', JSON.stringify(buildings)); }
+        function getHistory() { return JSON.parse(localStorage.getItem('rr_receiptHistory')) || []; }
+        function saveHistory(history) { localStorage.setItem('rr_receiptHistory', JSON.stringify(history)); }
+
+        function findBuilding(id) { return getBuildings().find(b => b.id === id); }
+        function findTenant(buildingId, tenantId) {
+            const b = findBuilding(buildingId);
+            return b ? b.tenants.find(t => t.id === tenantId) : null;
         }
 
-        // Set current month
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                       'July', 'August', 'September', 'October', 'November', 'December'];
-        document.getElementById('month').value = months[new Date().getMonth()];
+        function getActiveBuildings() { return getBuildings().filter(b => !b.archived); }
+        function getActiveTenants(buildingId) {
+            const b = findBuilding(buildingId);
+            return b ? b.tenants.filter(t => !t.archived) : [];
+        }
 
-        window.onload = function() {
-            loadSettings();
-            loadPreviousReading();
-            loadHistory();
-            setupEventListeners();
-        };
+        function getTenantMonthlyRent(tenant) {
+            const s = tenant.settings || {};
+            return (s.baseRent || 0) + (s.waterCharges || 0) + (s.maintenanceFee || 0) + (s.otherCharges || 0);
+        }
 
-        function setupEventListeners() {
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    tab.classList.add('active');
-                    document.getElementById(tab.dataset.tab).classList.add('active');
+        function getBuildingMonthlyTotal(building) {
+            return building.tenants.filter(t => !t.archived).reduce((sum, t) => sum + getTenantMonthlyRent(t), 0);
+        }
+
+        function getTotalMonthlyCollection() {
+            return getActiveBuildings().reduce((sum, b) => sum + getBuildingMonthlyTotal(b), 0);
+        }
+
+        function getTotalTenantCount() {
+            return getBuildings().reduce((sum, b) => sum + b.tenants.length, 0);
+        }
+
+        function getActiveTenantCount() {
+            return getActiveBuildings().reduce((sum, b) => sum + getActiveTenants(b.id).length, 0);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function openGenericModal(title, bodyHTML, footerHTML) {
+            document.getElementById('genericModalTitle').textContent = title;
+            document.getElementById('genericModalBody').innerHTML = bodyHTML;
+            document.getElementById('genericModalFooter').innerHTML = footerHTML;
+            document.getElementById('genericModal').classList.add('active');
+        }
+
+        function closeGenericModal() {
+            document.getElementById('genericModal').classList.remove('active');
+        }
+
+        function closeReceipt() {
+            document.getElementById('receiptModal').classList.remove('active');
+        }
+
+        document.getElementById('receiptModal').addEventListener('click', (e) => {
+            if (e.target.id === 'receiptModal') closeReceipt();
+        });
+
+        document.getElementById('genericModal').addEventListener('click', (e) => {
+            if (e.target.id === 'genericModal') closeGenericModal();
+        });
+
+        // Migration
+        function migrateOldData() {
+            if (localStorage.getItem('rr_migrated')) return;
+            const oldSettings = JSON.parse(localStorage.getItem('rentSettings'));
+            const oldPrevReading = localStorage.getItem('previousReading');
+            const oldHistory = JSON.parse(localStorage.getItem('receiptHistory')) || [];
+
+            if (!oldSettings && oldHistory.length === 0) {
+                localStorage.setItem('rr_migrated', 'true');
+                return;
+            }
+
+            const buildingId = genId();
+            const tenantId = genId();
+
+            const building = {
+                id: buildingId,
+                name: 'My Property',
+                address: '',
+                archived: false,
+                tenants: [{
+                    id: tenantId,
+                    name: 'Default Tenant',
+                    phone: '',
+                    flatUnit: '',
+                    archived: false,
+                    movedOutDate: null,
+                    settings: oldSettings || { baseRent: 0, waterCharges: 0, maintenanceFee: 0, otherCharges: 0, elecRate: 0 },
+                    previousReading: parseFloat(oldPrevReading) || 0
+                }]
+            };
+
+            saveBuildings([building]);
+
+            const migratedHistory = oldHistory.map(r => ({
+                id: genId(),
+                buildingId,
+                buildingName: 'My Property',
+                tenantId,
+                tenantName: 'Default Tenant',
+                tenantFlat: '',
+                month: r.month,
+                year: r.year,
+                date: r.date,
+                settings: r.settings,
+                previousReading: r.previousReading,
+                currentReading: r.currentReading,
+                unitsConsumed: r.unitsConsumed,
+                electricityBill: r.electricityBill,
+                totalRent: r.totalRent
+            }));
+
+            saveHistory(migratedHistory);
+            localStorage.removeItem('rentSettings');
+            localStorage.removeItem('previousReading');
+            localStorage.removeItem('receiptHistory');
+            localStorage.setItem('rr_migrated', 'true');
+        }
+
+        function showMigrationBanner() {
+            if (localStorage.getItem('rr_banner_dismissed')) return;
+            const buildings = getBuildings();
+            const hasMigrated = buildings.some(b => b.name === 'My Property');
+            if (!hasMigrated) return;
+
+            document.getElementById('migrationBanner').innerHTML = `
+                <div class="migration-banner">
+                    <span class="mig-icon">✨</span>
+                    <span class="mig-text">Your previous data has been migrated into "My Property". You can now organize it into buildings and tenants.</span>
+                    <button class="mig-close" onclick="dismissMigrationBanner()">&times;</button>
+                </div>`;
+        }
+
+        function dismissMigrationBanner() {
+            localStorage.setItem('rr_banner_dismissed', 'true');
+            document.getElementById('migrationBanner').innerHTML = '';
+        }
+
+        // Dashboard
+        function renderDashboard() {
+            const totalCollection = getTotalMonthlyCollection();
+            const bldgCount = getActiveBuildings().length;
+            const tenantCount = getActiveTenantCount();
+
+            document.getElementById('dashboardCard').innerHTML = `
+                <div class="dashboard-card">
+                    <div class="dashboard-stats">
+                        <div class="stat-box">
+                            <div class="stat-value">₹${totalCollection.toLocaleString()}</div>
+                            <div class="stat-label">Monthly</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">${bldgCount}</div>
+                            <div class="stat-label">Buildings</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">${tenantCount}</div>
+                            <div class="stat-label">Tenants</div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        // Buildings list
+        function renderBuildingsList() {
+            const buildings = getBuildings();
+            const container = document.getElementById('buildingsList');
+
+            if (buildings.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">🏢</div>
+                        <p>No buildings yet. Add your first property!</p>
+                    </div>
+                    <button class="btn" onclick="openAddBuildingModal()" style="margin-top:12px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                        Add Building
+                    </button>`;
+                return;
+            }
+
+            let html = '';
+
+            const active = buildings.filter(b => !b.archived);
+            const archived = buildings.filter(b => b.archived);
+
+            if (active.length > 0) {
+                html += active.map(b => {
+                    const tenantCount = b.tenants.length;
+                    const activeTenants = b.tenants.filter(t => !t.archived).length;
+                    const total = getBuildingMonthlyTotal(b);
+                    return `
+                        <div class="building-card" onclick="openBuildingView('${b.id}')">
+                            <div class="bldg-top">
+                                <div>
+                                    <div class="bldg-name">${b.name}</div>
+                                    ${b.address ? `<div class="bldg-address">${b.address}</div>` : ''}
+                                </div>
+                                <div class="bldg-total">₹${total.toLocaleString()}/mo</div>
+                            </div>
+                            <div class="bldg-meta">
+                                <span>👥 ${activeTenants}${tenantCount !== activeTenants ? `/${tenantCount}` : ''} tenants</span>
+                            </div>
+                            <div class="bldg-actions" onclick="event.stopPropagation()">
+                                <button onclick="openEditBuildingModal('${b.id}')">Edit</button>
+                                <button class="danger" onclick="confirmDeleteBuilding('${b.id}')">Delete</button>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+
+            if (archived.length > 0) {
+                html += `<div class="section-divider">Archived</div>`;
+                html += archived.map(b => `
+                    <div class="building-card" style="opacity:0.5">
+                        <div class="bldg-top">
+                            <div>
+                                <div class="bldg-name">${b.name} <span class="archive-badge">Archived</span></div>
+                                ${b.address ? `<div class="bldg-address">${b.address}</div>` : ''}
+                            </div>
+                            <div class="bldg-total">₹${getBuildingMonthlyTotal(b).toLocaleString()}/mo</div>
+                        </div>
+                        <div class="bldg-meta"><span>👥 ${b.tenants.length} tenants</span></div>
+                        <div class="bldg-actions" onclick="event.stopPropagation()">
+                            <button onclick="unarchiveBuilding('${b.id}')">Restore</button>
+                            <button class="danger" onclick="confirmDeleteBuilding('${b.id}')">Delete</button>
+                        </div>
+                    </div>`).join('');
+            }
+
+            html += `<button class="btn" onclick="openAddBuildingModal()" style="margin-top:12px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                Add Building
+            </button>`;
+
+            container.innerHTML = html;
+        }
+
+        function openBuildingView(buildingId) {
+            currentViewingBuildingId = buildingId;
+            document.getElementById('buildingsView').classList.add('hidden');
+            document.getElementById('tenantListView').classList.remove('hidden');
+            renderTenantList(buildingId);
+        }
+
+        function closeBuildingView() {
+            currentViewingBuildingId = null;
+            document.getElementById('buildingsView').classList.remove('hidden');
+            document.getElementById('tenantListView').classList.add('hidden');
+            renderBuildingsList();
+        }
+
+        // Tenant list
+        function renderTenantList(buildingId) {
+            const building = findBuilding(buildingId);
+            if (!building) return;
+
+            const container = document.getElementById('tenantListView');
+            const active = building.tenants.filter(t => !t.archived);
+            const archived = building.tenants.filter(t => t.archived);
+            const history = getHistory().filter(r => r.buildingId === buildingId);
+
+            let html = `
+                <button class="back-btn" onclick="closeBuildingView()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Buildings
+                </button>
+                <div class="section-label">${building.name}</div>
+                ${building.address ? `<p style="color:var(--text-muted);font-size:12px;margin-bottom:16px;">${building.address}</p>` : ''}`;
+
+            if (active.length > 0) {
+                html += active.map(t => {
+                    const monthlyRent = getTenantMonthlyRent(t);
+                    const tenantHistory = history.filter(r => r.tenantId === t.id);
+                    return `
+                        <div class="tenant-card">
+                            <div class="tenant-top">
+                                <div>
+                                    <div class="tenant-name">${t.name}</div>
+                                    <div class="tenant-flat">${t.flatUnit || 'No flat assigned'}</div>
+                                    ${t.phone ? `<div class="tenant-phone">📱 ${t.phone}</div>` : ''}
+                                </div>
+                                <div class="tenant-rent">₹${monthlyRent.toLocaleString()}/mo</div>
+                            </div>
+                            <div class="tenant-actions">
+                                <button onclick="openEditTenantModal('${buildingId}','${t.id}')">Edit</button>
+                                <button onclick="markMovedOut('${buildingId}','${t.id}')">Move Out</button>
+                                ${tenantHistory.length > 0 ? `<button onclick="viewTenantHistory('${buildingId}','${t.id}')">History (${tenantHistory.length})</button>` : ''}
+                                <button class="danger" onclick="confirmDeleteTenant('${buildingId}','${t.id}')">Delete</button>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+
+            if (archived.length > 0) {
+                html += `<div class="section-divider">Moved Out / Archived</div>`;
+                html += archived.map(t => `
+                    <div class="tenant-card archived-card">
+                        <div class="tenant-top">
+                            <div>
+                                <div class="tenant-name">${t.name} <span class="moved-out-badge">${t.movedOutDate ? 'Moved Out' : 'Archived'}</span></div>
+                                <div class="tenant-flat">${t.flatUnit || 'No flat assigned'}</div>
+                                ${t.movedOutDate ? `<div class="tenant-phone">Since ${t.movedOutDate}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="tenant-actions">
+                            <button onclick="unarchiveTenant('${buildingId}','${t.id}')">Restore</button>
+                            <button class="danger" onclick="confirmDeleteTenant('${buildingId}','${t.id}')">Delete</button>
+                        </div>
+                    </div>`).join('');
+            }
+
+            if (building.tenants.length === 0) {
+                html += `
+                    <div class="empty-state">
+                        <div class="icon">👤</div>
+                        <p>No tenants yet. Add your first tenant!</p>
+                    </div>`;
+            }
+
+            html += `<button class="btn" onclick="openAddTenantModal('${buildingId}')" style="margin-top:12px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                Add Tenant
+            </button>`;
+
+            container.innerHTML = html;
+        }
+
+        // Building CRUD
+        function openAddBuildingModal() {
+            editingBuildingId = null;
+            openGenericModal('Add Building', `
+                <div class="form-group">
+                    <label>Building Name</label>
+                    <input type="text" id="bldgName" placeholder="e.g., Sunrise Apartments">
+                </div>
+                <div class="form-group">
+                    <label>Address (optional)</label>
+                    <input type="text" id="bldgAddress" placeholder="e.g., 123 Main St, Mumbai">
+                </div>`,
+                `<button class="btn" onclick="saveBuilding()">Save Building</button>`
+            );
+        }
+
+        function openEditBuildingModal(buildingId) {
+            const b = findBuilding(buildingId);
+            if (!b) return;
+            editingBuildingId = buildingId;
+            openGenericModal('Edit Building', `
+                <div class="form-group">
+                    <label>Building Name</label>
+                    <input type="text" id="bldgName" value="${b.name}" placeholder="e.g., Sunrise Apartments">
+                </div>
+                <div class="form-group">
+                    <label>Address (optional)</label>
+                    <input type="text" id="bldgAddress" value="${b.address || ''}" placeholder="e.g., 123 Main St, Mumbai">
+                </div>`,
+                `<button class="btn" onclick="saveBuilding()">Update Building</button>`
+            );
+        }
+
+        function saveBuilding() {
+            const name = document.getElementById('bldgName').value.trim();
+            const address = document.getElementById('bldgAddress').value.trim();
+            if (!name) { showToast('Please enter a building name'); return; }
+
+            let buildings = getBuildings();
+
+            if (editingBuildingId) {
+                buildings = buildings.map(b => b.id === editingBuildingId ? { ...b, name, address } : b);
+            } else {
+                buildings.push({ id: genId(), name, address, archived: false, tenants: [] });
+            }
+
+            saveBuildings(buildings);
+
+            const oldHistory = getHistory();
+            if (editingBuildingId) {
+                const updated = oldHistory.map(r => r.buildingId === editingBuildingId ? { ...r, buildingName: name } : r);
+                saveHistory(updated);
+            }
+
+            closeGenericModal();
+            renderBuildingsList();
+            renderDashboard();
+            populateSelectors();
+            showToast(editingBuildingId ? 'Building updated!' : 'Building added!');
+        }
+
+        function confirmDeleteBuilding(buildingId) {
+            const b = findBuilding(buildingId);
+            if (!b) return;
+            openGenericModal('Delete Building', `
+                <div class="confirm-dialog">
+                    <div class="confirm-icon">⚠️</div>
+                    <div class="confirm-title">Delete "${b.name}"?</div>
+                    <div class="confirm-msg">This will permanently delete the building and all ${b.tenants.length} tenant(s). All receipt history for these tenants will also be permanently deleted. This cannot be undone.</div>
+                </div>`,
+                `<div class="btn-row">
+                    <button class="btn btn-secondary" onclick="closeGenericModal()">Cancel</button>
+                    <button class="btn btn-danger" onclick="deleteBuilding('${buildingId}')">Delete</button>
+                </div>`
+            );
+        }
+
+        function deleteBuilding(buildingId) {
+            let buildings = getBuildings().filter(b => b.id !== buildingId);
+            saveBuildings(buildings);
+
+            let history = getHistory().filter(r => r.buildingId !== buildingId);
+            saveHistory(history);
+
+            closeGenericModal();
+            renderBuildingsList();
+            renderDashboard();
+            populateSelectors();
+            showToast('Building deleted');
+        }
+
+        function unarchiveBuilding(buildingId) {
+            let buildings = getBuildings().map(b => b.id === buildingId ? { ...b, archived: false } : b);
+            saveBuildings(buildings);
+            renderBuildingsList();
+            renderDashboard();
+            populateSelectors();
+            showToast('Building restored');
+        }
+
+        // Tenant CRUD
+        function tenantFormHTML(tenant) {
+            const s = tenant ? tenant.settings : {};
+            return `
+                <div class="form-group">
+                    <label>Tenant Name</label>
+                    <input type="text" id="tenantName" value="${tenant ? tenant.name : ''}" placeholder="e.g., Rahul Sharma">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="tenantPhone" value="${tenant ? tenant.phone : ''}" placeholder="e.g., 9876543210">
+                </div>
+                <div class="form-group">
+                    <label>Flat / Unit</label>
+                    <input type="text" id="tenantFlat" value="${tenant ? tenant.flatUnit : ''}" placeholder="e.g., Flat 101">
+                </div>
+                <div class="section-divider" style="margin-top:20px;">Rent Settings</div>
+                <div class="settings-grid">
+                    <div class="form-group">
+                        <label>Base Rent (₹)</label>
+                        <input type="number" id="tBaseRent" value="${s.baseRent || ''}" placeholder="e.g., 10000">
+                    </div>
+                    <div class="form-group">
+                        <label>Water (₹)</label>
+                        <input type="number" id="tWaterCharges" value="${s.waterCharges || ''}" placeholder="e.g., 500">
+                    </div>
+                    <div class="form-group">
+                        <label>Maintenance (₹)</label>
+                        <input type="number" id="tMaintenanceFee" value="${s.maintenanceFee || ''}" placeholder="e.g., 1000">
+                    </div>
+                    <div class="form-group">
+                        <label>Other (₹)</label>
+                        <input type="number" id="tOtherCharges" value="${s.otherCharges || ''}" placeholder="e.g., 0">
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>Electricity Rate per Unit (₹)</label>
+                        <input type="number" id="tElecRate" value="${s.elecRate || ''}" placeholder="e.g., 8.50" step="0.01">
+                    </div>
+                </div>`;
+        }
+
+        function openAddTenantModal(buildingId) {
+            editingTenantId = null;
+            openGenericModal('Add Tenant', tenantFormHTML(null),
+                `<button class="btn" onclick="saveTenant('${buildingId}')">Save Tenant</button>`
+            );
+        }
+
+        function openEditTenantModal(buildingId, tenantId) {
+            const t = findTenant(buildingId, tenantId);
+            if (!t) return;
+            editingTenantId = tenantId;
+            openGenericModal('Edit Tenant', tenantFormHTML(t),
+                `<button class="btn" onclick="saveTenant('${buildingId}')">Update Tenant</button>`
+            );
+        }
+
+        function saveTenant(buildingId) {
+            const name = document.getElementById('tenantName').value.trim();
+            const phone = document.getElementById('tenantPhone').value.trim();
+            const flat = document.getElementById('tenantFlat').value.trim();
+            const settings = {
+                baseRent: parseFloat(document.getElementById('tBaseRent').value) || 0,
+                waterCharges: parseFloat(document.getElementById('tWaterCharges').value) || 0,
+                maintenanceFee: parseFloat(document.getElementById('tMaintenanceFee').value) || 0,
+                otherCharges: parseFloat(document.getElementById('tOtherCharges').value) || 0,
+                elecRate: parseFloat(document.getElementById('tElecRate').value) || 0
+            };
+
+            if (!name) { showToast('Please enter tenant name'); return; }
+
+            let buildings = getBuildings();
+            const bIdx = buildings.findIndex(b => b.id === buildingId);
+            if (bIdx === -1) return;
+
+            if (editingTenantId) {
+                buildings[bIdx].tenants = buildings[bIdx].tenants.map(t =>
+                    t.id === editingTenantId ? { ...t, name, phone, flatUnit: flat, settings } : t
+                );
+            } else {
+                buildings[bIdx].tenants.push({
+                    id: genId(), name, phone, flatUnit: flat,
+                    archived: false, movedOutDate: null,
+                    settings,
+                    previousReading: 0
                 });
-            });
+            }
 
-            document.getElementById('currentReading').addEventListener('input', calculateElectricity);
-            document.getElementById('manualPrevReading').addEventListener('input', function() {
-                manualPrevReading = parseFloat(this.value) || 0;
-                calculateElectricity();
-            });
+            saveBuildings(buildings);
+            closeGenericModal();
+            renderTenantList(buildingId);
+            renderDashboard();
+            populateSelectors();
+            showToast(editingTenantId ? 'Tenant updated!' : 'Tenant added!');
+        }
+
+        function confirmDeleteTenant(buildingId, tenantId) {
+            const t = findTenant(buildingId, tenantId);
+            if (!t) return;
+            openGenericModal('Delete Tenant', `
+                <div class="confirm-dialog">
+                    <div class="confirm-icon">⚠️</div>
+                    <div class="confirm-title">Delete "${t.name}"?</div>
+                    <div class="confirm-msg">This will permanently delete this tenant and all their receipt history. This cannot be undone. Consider archiving instead.</div>
+                </div>`,
+                `<div class="btn-row">
+                    <button class="btn btn-secondary" onclick="closeGenericModal()">Cancel</button>
+                    <button class="btn btn-danger" onclick="deleteTenant('${buildingId}','${tenantId}')">Delete</button>
+                </div>`
+            );
+        }
+
+        function deleteTenant(buildingId, tenantId) {
+            let buildings = getBuildings();
+            const bIdx = buildings.findIndex(b => b.id === buildingId);
+            if (bIdx === -1) return;
+            buildings[bIdx].tenants = buildings[bIdx].tenants.filter(t => t.id !== tenantId);
+            saveBuildings(buildings);
+
+            let history = getHistory().filter(r => !(r.buildingId === buildingId && r.tenantId === tenantId));
+            saveHistory(history);
+
+            closeGenericModal();
+            renderTenantList(buildingId);
+            renderDashboard();
+            populateSelectors();
+            showToast('Tenant deleted');
+        }
+
+        function markMovedOut(buildingId, tenantId) {
+            const t = findTenant(buildingId, tenantId);
+            if (!t) return;
+            const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            openGenericModal('Mark as Moved Out', `
+                <div class="confirm-dialog">
+                    <div class="confirm-icon">🚪</div>
+                    <div class="confirm-title">Mark "${t.name}" as Moved Out?</div>
+                    <div class="confirm-msg">This tenant will be archived with move-out date ${today}. Their receipt history will be preserved and viewable. You can restore them later if needed.</div>
+                </div>`,
+                `<div class="btn-row">
+                    <button class="btn btn-secondary" onclick="closeGenericModal()">Cancel</button>
+                    <button class="btn" onclick="doMarkMovedOut('${buildingId}','${tenantId}','${today}')">Confirm Move Out</button>
+                </div>`
+            );
+        }
+
+        function doMarkMovedOut(buildingId, tenantId, date) {
+            let buildings = getBuildings();
+            const bIdx = buildings.findIndex(b => b.id === buildingId);
+            if (bIdx === -1) return;
+            buildings[bIdx].tenants = buildings[bIdx].tenants.map(t =>
+                t.id === tenantId ? { ...t, archived: true, movedOutDate: date } : t
+            );
+            saveBuildings(buildings);
+            closeGenericModal();
+            renderTenantList(buildingId);
+            renderDashboard();
+            populateSelectors();
+            showToast('Tenant marked as moved out');
+        }
+
+        function unarchiveTenant(buildingId, tenantId) {
+            let buildings = getBuildings();
+            const bIdx = buildings.findIndex(b => b.id === buildingId);
+            if (bIdx === -1) return;
+            buildings[bIdx].tenants = buildings[bIdx].tenants.map(t =>
+                t.id === tenantId ? { ...t, archived: false, movedOutDate: null } : t
+            );
+            saveBuildings(buildings);
+            renderTenantList(buildingId);
+            renderDashboard();
+            populateSelectors();
+            showToast('Tenant restored');
+        }
+
+        function viewTenantHistory(buildingId, tenantId) {
+            document.querySelector('[data-tab="history"]').click();
+            document.getElementById('filterBuilding').value = buildingId;
+            onFilterBuildingChange();
+            setTimeout(() => {
+                document.getElementById('filterTenant').value = tenantId;
+                renderHistory();
+            }, 100);
+        }
+
+        // Selectors
+        function populateSelectors() {
+            const buildings = getActiveBuildings();
+
+            const entryBldg = document.getElementById('entryBuilding');
+            const filterBldg = document.getElementById('filterBuilding');
+
+            const entryVal = entryBldg.value;
+            const filterVal = filterBldg.value;
+
+            entryBldg.innerHTML = '<option value="">Select a building...</option>' +
+                buildings.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
+            entryBldg.value = entryVal;
+
+            filterBldg.innerHTML = '<option value="">All Buildings</option>' +
+                buildings.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
+            filterBldg.value = filterVal;
+        }
+
+        function populateTenantSelector(buildingId, selectId, defaultOption) {
+            const tenants = getActiveTenants(buildingId);
+            const sel = document.getElementById(selectId);
+            sel.innerHTML = `<option value="">${defaultOption}</option>` +
+                tenants.map(t => `<option value="${t.id}">${t.name}${t.flatUnit ? ' (' + t.flatUnit + ')' : ''}</option>`).join('');
+        }
+
+        // Entry tab
+        function onEntryBuildingChange() {
+            const buildingId = document.getElementById('entryBuilding').value;
+            const tenantSel = document.getElementById('entryTenant');
+            const infoDiv = document.getElementById('entryTenantInfo');
+
+            if (!buildingId) {
+                tenantSel.innerHTML = '<option value="">Select a tenant...</option>';
+                infoDiv.classList.add('hidden');
+                resetEntryForm();
+                return;
+            }
+
+            populateTenantSelector(buildingId, 'entryTenant', 'Select a tenant...');
+            infoDiv.classList.add('hidden');
+            resetEntryForm();
+        }
+
+        function onEntryTenantChange() {
+            const buildingId = document.getElementById('entryBuilding').value;
+            const tenantId = document.getElementById('entryTenant').value;
+            const infoDiv = document.getElementById('entryTenantInfo');
+            const prevCard = document.getElementById('prevReadingCard');
+            const manualToggle = document.getElementById('manualToggle');
+
+            if (!tenantId) {
+                infoDiv.classList.add('hidden');
+                prevCard.classList.add('hidden');
+                manualToggle.classList.add('hidden');
+                resetEntryForm();
+                return;
+            }
+
+            const tenant = findTenant(buildingId, tenantId);
+            if (!tenant) return;
+
+            const monthlyRent = getTenantMonthlyRent(tenant);
+            infoDiv.innerHTML = `
+                <div class="info-card" style="margin-bottom:16px;">
+                    <div class="info-card-icon">👤</div>
+                    <div class="info-card-content">
+                        <div class="label">Monthly Rent</div>
+                        <div class="value">₹${monthlyRent.toLocaleString()}</div>
+                    </div>
+                </div>`;
+            infoDiv.classList.remove('hidden');
+
+            document.getElementById('prevReadingDisplay').textContent = (tenant.previousReading || 0) + ' units';
+            prevCard.classList.remove('hidden');
+            manualToggle.classList.remove('hidden');
+
+            manualMode = false;
+            document.querySelector('.manual-input-toggle').classList.remove('active');
+            document.getElementById('manualInputSection').classList.remove('show');
+            resetEntryForm();
+        }
+
+        function resetEntryForm() {
+            document.getElementById('currentReading').value = '';
+            document.getElementById('elecCalc').classList.add('hidden');
+            manualPrevReading = 0;
         }
 
         function toggleManualInput() {
             const toggle = document.querySelector('.manual-input-toggle');
             const section = document.getElementById('manualInputSection');
             manualMode = !manualMode;
-            
+
             if (manualMode) {
                 toggle.classList.add('active');
                 section.classList.add('show');
@@ -1024,44 +1840,18 @@
             calculateElectricity();
         }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
-        function loadSettings() {
-            const settings = JSON.parse(localStorage.getItem('rentSettings')) || {};
-            document.getElementById('baseRent').value = settings.baseRent || '';
-            document.getElementById('waterCharges').value = settings.waterCharges || '';
-            document.getElementById('maintenanceFee').value = settings.maintenanceFee || '';
-            document.getElementById('otherCharges').value = settings.otherCharges || '';
-            document.getElementById('elecRate').value = settings.elecRate || '';
-        }
-
-        function saveSettings() {
-            const settings = {
-                baseRent: parseFloat(document.getElementById('baseRent').value) || 0,
-                waterCharges: parseFloat(document.getElementById('waterCharges').value) || 0,
-                maintenanceFee: parseFloat(document.getElementById('maintenanceFee').value) || 0,
-                otherCharges: parseFloat(document.getElementById('otherCharges').value) || 0,
-                elecRate: parseFloat(document.getElementById('elecRate').value) || 0
-            };
-            localStorage.setItem('rentSettings', JSON.stringify(settings));
-            showToast('Settings saved successfully!');
-        }
-
-        function loadPreviousReading() {
-            const lastReading = localStorage.getItem('previousReading') || '--';
-            document.getElementById('prevReadingDisplay').textContent = lastReading + ' units';
-        }
-
         function calculateElectricity() {
+            const buildingId = document.getElementById('entryBuilding').value;
+            const tenantId = document.getElementById('entryTenant').value;
+            if (!tenantId) return;
+
+            const tenant = findTenant(buildingId, tenantId);
+            if (!tenant) return;
+
             const currentReading = parseFloat(document.getElementById('currentReading').value) || 0;
-            let previousReading = manualMode ? manualPrevReading : (parseFloat(localStorage.getItem('previousReading')) || 0);
-            const rate = parseFloat(document.getElementById('elecRate').value) || 0;
-            
+            let previousReading = manualMode ? manualPrevReading : (tenant.previousReading || 0);
+            const rate = tenant.settings.elecRate || 0;
+
             const unitsConsumed = Math.max(0, currentReading - previousReading);
             const electricityBill = unitsConsumed * rate;
 
@@ -1078,29 +1868,44 @@
         }
 
         function generateReceipt() {
-            const settings = JSON.parse(localStorage.getItem('rentSettings')) || {};
-            
+            const buildingId = document.getElementById('entryBuilding').value;
+            const tenantId = document.getElementById('entryTenant').value;
+
+            if (!buildingId || !tenantId) {
+                showToast('Please select a building and tenant');
+                return;
+            }
+
+            const building = findBuilding(buildingId);
+            const tenant = findTenant(buildingId, tenantId);
+            if (!building || !tenant) return;
+
+            const settings = tenant.settings;
             if (!settings.baseRent) {
-                alert('Please configure your fixed costs in Settings first!');
-                document.querySelector('[data-tab="settings"]').click();
+                showToast('Please set rent settings for this tenant');
                 return;
             }
 
             const month = document.getElementById('month').value;
             const year = document.getElementById('year').value;
             const currentReading = parseFloat(document.getElementById('currentReading').value) || 0;
-            let previousReading = manualMode ? manualPrevReading : (parseFloat(localStorage.getItem('previousReading')) || 0);
+            let previousReading = manualMode ? manualPrevReading : (tenant.previousReading || 0);
             const unitsConsumed = Math.max(0, currentReading - previousReading);
             const electricityBill = unitsConsumed * (settings.elecRate || 0);
-            
-            const totalRent = settings.baseRent + settings.waterCharges + 
-                            settings.maintenanceFee + settings.otherCharges + electricityBill;
+
+            const totalRent = settings.baseRent + settings.waterCharges +
+                settings.maintenanceFee + settings.otherCharges + electricityBill;
 
             currentReceipt = {
+                buildingId,
+                buildingName: building.name,
+                tenantId,
+                tenantName: tenant.name,
+                tenantFlat: tenant.flatUnit,
                 month,
                 year,
                 date: new Date().toLocaleDateString(),
-                settings: settings,
+                settings: { ...settings },
                 previousReading,
                 currentReading,
                 unitsConsumed,
@@ -1113,7 +1918,10 @@
                     <h3>RENT RECEIPT</h3>
                     <div class="receipt-month">${month} ${year}</div>
                 </div>
-
+                <div class="receipt-tenant-info">
+                    <div class="name">${tenant.name}</div>
+                    <div class="detail">${tenant.flatUnit ? tenant.flatUnit + ' · ' : ''}${building.name}</div>
+                </div>
                 <div class="receipt-section">
                     <h4>Fixed Charges</h4>
                     <div class="receipt-row">
@@ -1133,7 +1941,6 @@
                         <span class="value">₹${settings.otherCharges.toLocaleString()}</span>
                     </div>
                 </div>
-
                 <div class="receipt-section">
                     <h4>Electricity</h4>
                     <div class="receipt-row">
@@ -1157,19 +1964,16 @@
                         <span class="value">₹${electricityBill.toFixed(2)}</span>
                     </div>
                 </div>
-
                 <div class="receipt-total">
                     <span>TOTAL</span>
                     <span>₹${totalRent.toLocaleString()}</span>
                 </div>
-
                 <div class="receipt-footer">
-                    Generated on ${new Date().toLocaleDateString('en-IN', { 
-                        day: 'numeric', month: 'short', year: 'numeric', 
-                        hour: '2-digit', minute: '2-digit' 
+                    Generated on ${new Date().toLocaleDateString('en-IN', {
+                        day: 'numeric', month: 'short', year: 'numeric',
+                        hour: '2-digit', minute: '2-digit'
                     })}
-                </div>
-            `;
+                </div>`;
 
             document.getElementById('receiptContent').innerHTML = receiptHTML;
             document.getElementById('receiptModal').classList.add('active');
@@ -1179,59 +1983,98 @@
         function saveToHistory() {
             if (!currentReceipt) return;
 
-            let history = JSON.parse(localStorage.getItem('receiptHistory')) || [];
-            history.unshift(currentReceipt);
-            localStorage.setItem('receiptHistory', JSON.stringify(history));
-            
+            let history = getHistory();
+            history.unshift({ ...currentReceipt, id: genId() });
+            saveHistory(history);
+
             if (!manualMode) {
-                localStorage.setItem('previousReading', currentReceipt.currentReading);
+                let buildings = getBuildings();
+                const bIdx = buildings.findIndex(b => b.id === currentReceipt.buildingId);
+                if (bIdx !== -1) {
+                    const tIdx = buildings[bIdx].tenants.findIndex(t => t.id === currentReceipt.tenantId);
+                    if (tIdx !== -1) {
+                        buildings[bIdx].tenants[tIdx].previousReading = currentReceipt.currentReading;
+                        saveBuildings(buildings);
+                    }
+                }
             }
 
             showToast('Receipt saved!');
             closeReceipt();
             loadHistory();
-            loadPreviousReading();
+            renderDashboard();
             document.getElementById('currentReading').value = '';
             document.getElementById('elecCalc').classList.add('hidden');
+
+            if (currentViewingBuildingId) {
+                renderTenantList(currentViewingBuildingId);
+            }
         }
 
-        function loadHistory() {
-            const history = JSON.parse(localStorage.getItem('receiptHistory')) || [];
+        // History
+        function onFilterBuildingChange() {
+            const buildingId = document.getElementById('filterBuilding').value;
+            if (buildingId) {
+                populateTenantSelector(buildingId, 'filterTenant', 'All Tenants');
+            } else {
+                document.getElementById('filterTenant').innerHTML = '<option value="">All Tenants</option>';
+            }
+            renderHistory();
+        }
+
+        function renderHistory() {
+            let history = getHistory();
+            const filterBldg = document.getElementById('filterBuilding').value;
+            const filterTenant = document.getElementById('filterTenant').value;
+
+            if (filterBldg) history = history.filter(r => r.buildingId === filterBldg);
+            if (filterTenant) history = history.filter(r => r.tenantId === filterTenant);
+
             const historyList = document.getElementById('historyList');
-            
+
             if (history.length === 0) {
                 historyList.innerHTML = `
                     <div class="empty-state">
                         <div class="icon">📋</div>
-                        <p>No receipts yet. Create your first receipt!</p>
+                        <p>No receipts found.</p>
                     </div>`;
                 return;
             }
 
-            historyList.innerHTML = history.map((receipt, index) => `
-                <div class="history-item" onclick="viewReceipt(${index})">
-                    <div class="top">
-                        <span class="month">${receipt.month} ${receipt.year}</span>
-                        <span class="amount">₹${receipt.totalRent.toLocaleString()}</span>
-                    </div>
-                    <div class="details">
-                        <span>📅 ${receipt.date}</span>
-                        <span>⚡ ${receipt.unitsConsumed} units</span>
-                    </div>
-                </div>
-            `).join('');
+            historyList.innerHTML = history.map((receipt) => {
+                const idx = getHistory().indexOf(receipt);
+                return `
+                    <div class="history-item" onclick="viewHistoryReceipt(${idx})">
+                        <div class="top">
+                            <div>
+                                <span class="month">${receipt.month} ${receipt.year}</span>
+                                ${receipt.tenantName ? `<div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${receipt.tenantName}${receipt.tenantFlat ? ' · ' + receipt.tenantFlat : ''}</div>` : ''}
+                            </div>
+                            <span class="amount">₹${receipt.totalRent.toLocaleString()}</span>
+                        </div>
+                        <div class="details">
+                            <span>📅 ${receipt.date}</span>
+                            <span>⚡ ${receipt.unitsConsumed} units</span>
+                        </div>
+                    </div>`;
+            }).join('');
         }
 
-        function viewReceipt(index) {
-            const history = JSON.parse(localStorage.getItem('receiptHistory')) || [];
+        function viewHistoryReceipt(index) {
+            const history = getHistory();
             const r = history[index];
-            
+            if (!r) return;
+
             const receiptHTML = `
                 <div class="receipt-header">
                     <h3>RENT RECEIPT</h3>
                     <div class="receipt-month">${r.month} ${r.year}</div>
                 </div>
-
+                ${r.tenantName ? `
+                <div class="receipt-tenant-info">
+                    <div class="name">${r.tenantName}</div>
+                    <div class="detail">${r.tenantFlat ? r.tenantFlat + ' · ' : ''}${r.buildingName || ''}</div>
+                </div>` : ''}
                 <div class="receipt-section">
                     <h4>Fixed Charges</h4>
                     <div class="receipt-row">
@@ -1251,7 +2094,6 @@
                         <span class="value">₹${r.settings.otherCharges.toLocaleString()}</span>
                     </div>
                 </div>
-
                 <div class="receipt-section">
                     <h4>Electricity</h4>
                     <div class="receipt-row">
@@ -1275,22 +2117,17 @@
                         <span class="value">₹${r.electricityBill.toFixed(2)}</span>
                     </div>
                 </div>
-
                 <div class="receipt-total">
                     <span>TOTAL</span>
                     <span>₹${r.totalRent.toLocaleString()}</span>
-                </div>
-            `;
+                </div>`;
 
             document.getElementById('receiptContent').innerHTML = receiptHTML;
             document.getElementById('receiptModal').classList.add('active');
             viewingHistoryIndex = index;
         }
 
-        function closeReceipt() {
-            document.getElementById('receiptModal').classList.remove('active');
-        }
-
+        // PDF
         function generatePDF(receipt) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ unit: 'mm', format: 'a4' });
@@ -1300,36 +2137,49 @@
             const contentWidth = pageWidth - margin * 2;
             let y = 20;
 
-            // Top gradient bar (simulated with a thick line)
             doc.setFillColor(99, 102, 241);
             doc.rect(margin, y, contentWidth, 4, 'F');
             y += 12;
 
-            // Title
             doc.setFontSize(24);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(248, 250, 252);
             doc.text('RENT RECEIPT', pageWidth / 2, y, { align: 'center' });
             y += 10;
 
-            // Month badge
+            const monthText = `${r.month} ${r.year}`;
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(255, 255, 255);
-            const monthText = `${r.month} ${r.year}`;
             const badgeWidth = doc.getTextWidth(monthText) + 16;
             doc.setFillColor(99, 102, 241);
             doc.roundedRect((pageWidth - badgeWidth) / 2, y - 5, badgeWidth, 9, 4, 4, 'F');
             doc.text(monthText, pageWidth / 2, y, { align: 'center' });
             y += 14;
 
-            // Divider
+            if (r.tenantName) {
+                doc.setDrawColor(46, 46, 58);
+                doc.setLineWidth(0.5);
+                doc.line(margin, y, pageWidth - margin, y);
+                y += 8;
+                doc.setFontSize(13);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(248, 250, 252);
+                doc.text(r.tenantName, pageWidth / 2, y, { align: 'center' });
+                y += 6;
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(148, 163, 184);
+                const detail = [r.tenantFlat, r.buildingName].filter(Boolean).join(' · ');
+                if (detail) doc.text(detail, pageWidth / 2, y, { align: 'center' });
+                y += 10;
+            }
+
             doc.setDrawColor(46, 46, 58);
             doc.setLineWidth(0.5);
             doc.line(margin, y, pageWidth - margin, y);
             y += 10;
 
-            // Section: Fixed Charges
             doc.setFontSize(9);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(34, 211, 238);
@@ -1357,12 +2207,10 @@
             });
             y += 4;
 
-            // Divider
             doc.setDrawColor(46, 46, 58);
             doc.line(margin, y, pageWidth - margin, y);
             y += 10;
 
-            // Section: Electricity
             doc.setFontSize(9);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(34, 211, 238);
@@ -1390,7 +2238,6 @@
             });
             y += 6;
 
-            // Total banner
             doc.setFillColor(99, 102, 241);
             doc.roundedRect(margin, y, contentWidth, 14, 3, 3, 'F');
             doc.setFontSize(14);
@@ -1400,13 +2247,12 @@
             doc.text(`Rs. ${r.totalRent.toLocaleString()}`, pageWidth - margin - 6, y + 9, { align: 'right' });
             y += 22;
 
-            // Footer
             doc.setFontSize(9);
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(100, 116, 139);
-            const genDate = new Date().toLocaleDateString('en-IN', { 
-                day: 'numeric', month: 'short', year: 'numeric', 
-                hour: '2-digit', minute: '2-digit' 
+            const genDate = new Date().toLocaleDateString('en-IN', {
+                day: 'numeric', month: 'short', year: 'numeric',
+                hour: '2-digit', minute: '2-digit'
             });
             doc.text(`Generated on ${genDate}`, pageWidth / 2, y, { align: 'center' });
 
@@ -1415,149 +2261,11 @@
 
         function downloadPDF() {
             if (!currentReceipt) return;
-
             const blob = generatePDF(currentReceipt);
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Rent-Receipt-${currentReceipt.month}-${currentReceipt.year}.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('PDF downloaded!');
-        }
-
-        function generatePDF(receipt) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-            const r = receipt;
-            const pageWidth = 210;
-            const margin = 25;
-            const contentWidth = pageWidth - margin * 2;
-            let y = 20;
-
-            // Top gradient bar (simulated with a thick line)
-            doc.setFillColor(99, 102, 241);
-            doc.rect(margin, y, contentWidth, 4, 'F');
-            y += 12;
-
-            // Title
-            doc.setFontSize(24);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(248, 250, 252);
-            doc.text('RENT RECEIPT', pageWidth / 2, y, { align: 'center' });
-            y += 10;
-
-            // Month badge
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(255, 255, 255);
-            const monthText = `${r.month} ${r.year}`;
-            const badgeWidth = doc.getTextWidth(monthText) + 16;
-            doc.setFillColor(99, 102, 241);
-            doc.roundedRect((pageWidth - badgeWidth) / 2, y - 5, badgeWidth, 9, 4, 4, 'F');
-            doc.text(monthText, pageWidth / 2, y, { align: 'center' });
-            y += 14;
-
-            // Divider
-            doc.setDrawColor(46, 46, 58);
-            doc.setLineWidth(0.5);
-            doc.line(margin, y, pageWidth - margin, y);
-            y += 10;
-
-            // Section: Fixed Charges
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(34, 211, 238);
-            doc.text('FIXED CHARGES', margin, y);
-            y += 8;
-
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(148, 163, 184);
-            const fixedItems = [
-                ['Base Rent', `Rs. ${r.settings.baseRent.toLocaleString()}`],
-                ['Water Charges', `Rs. ${r.settings.waterCharges.toLocaleString()}`],
-                ['Maintenance', `Rs. ${r.settings.maintenanceFee.toLocaleString()}`],
-                ['Other Charges', `Rs. ${r.settings.otherCharges.toLocaleString()}`]
-            ];
-
-            fixedItems.forEach(([label, value]) => {
-                doc.setTextColor(148, 163, 184);
-                doc.text(label, margin, y);
-                doc.setTextColor(248, 250, 252);
-                doc.setFont('helvetica', 'bold');
-                doc.text(value, pageWidth - margin, y, { align: 'right' });
-                doc.setFont('helvetica', 'normal');
-                y += 7;
-            });
-            y += 4;
-
-            // Divider
-            doc.setDrawColor(46, 46, 58);
-            doc.line(margin, y, pageWidth - margin, y);
-            y += 10;
-
-            // Section: Electricity
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(34, 211, 238);
-            doc.text('ELECTRICITY', margin, y);
-            y += 8;
-
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'normal');
-            const elecItems = [
-                ['Previous Reading', `${r.previousReading} units`],
-                ['Current Reading', `${r.currentReading} units`],
-                ['Units Used', `${r.unitsConsumed} units`],
-                ['Rate per Unit', `Rs. ${r.settings.elecRate.toFixed(2)}`],
-                ['Electricity Bill', `Rs. ${r.electricityBill.toFixed(2)}`]
-            ];
-
-            elecItems.forEach(([label, value]) => {
-                doc.setTextColor(148, 163, 184);
-                doc.text(label, margin, y);
-                doc.setTextColor(248, 250, 252);
-                doc.setFont('helvetica', 'bold');
-                doc.text(value, pageWidth - margin, y, { align: 'right' });
-                doc.setFont('helvetica', 'normal');
-                y += 7;
-            });
-            y += 6;
-
-            // Total banner
-            doc.setFillColor(99, 102, 241);
-            doc.roundedRect(margin, y, contentWidth, 14, 3, 3, 'F');
-            doc.setFontSize(14);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(255, 255, 255);
-            doc.text('TOTAL', margin + 6, y + 9);
-            doc.text(`Rs. ${r.totalRent.toLocaleString()}`, pageWidth - margin - 6, y + 9, { align: 'right' });
-            y += 22;
-
-            // Footer
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(100, 116, 139);
-            const genDate = new Date().toLocaleDateString('en-IN', { 
-                day: 'numeric', month: 'short', year: 'numeric', 
-                hour: '2-digit', minute: '2-digit' 
-            });
-            doc.text(`Generated on ${genDate}`, pageWidth / 2, y, { align: 'center' });
-
-            return doc.output('blob');
-        }
-
-        function downloadPDF() {
-            if (!currentReceipt) return;
-
-            const blob = generatePDF(currentReceipt);
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Rent-Receipt-${currentReceipt.month}-${currentReceipt.year}.pdf`;
+            a.download = `Rent-Receipt-${currentReceipt.month}-${currentReceipt.year}${currentReceipt.tenantName ? '-' + currentReceipt.tenantName.replace(/\s+/g, '-') : ''}.pdf`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1569,6 +2277,7 @@
             const r = currentReceipt;
             const text = `
 🏠 RENT RECEIPT - ${r.month} ${r.year}
+${r.tenantName ? `👤 ${r.tenantName}${r.tenantFlat ? ' (' + r.tenantFlat + ')' : ''}\n🏢 ${r.buildingName || ''}` : ''}
 
 📋 FIXED CHARGES:
 Base Rent: ₹${r.settings.baseRent}
@@ -1603,28 +2312,56 @@ Units: ${r.unitsConsumed} × ₹${r.settings.elecRate} = ₹${r.electricityBill.
                 navigator.clipboard.writeText(text).then(() => showToast('PDF downloaded & text copied!'));
             }
         }
-            } else {
-                const url = URL.createObjectURL(pdfBlob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `Rent-Receipt-${r.month}-${r.year}.pdf`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                navigator.clipboard.writeText(text).then(() => showToast('PDF downloaded & text copied!'));
-            }
+
+        // Tab navigation
+        function setupEventListeners() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+
+                    if (tab.dataset.tab === 'buildings') {
+                        closeBuildingView();
+                        renderBuildingsList();
+                        renderDashboard();
+                        showMigrationBanner();
+                    }
+                    if (tab.dataset.tab === 'history') {
+                        populateSelectors();
+                        renderHistory();
+                    }
+                });
+            });
+
+            document.getElementById('currentReading').addEventListener('input', calculateElectricity);
+            document.getElementById('manualPrevReading').addEventListener('input', function () {
+                manualPrevReading = parseFloat(this.value) || 0;
+                calculateElectricity();
+            });
         }
 
-        document.getElementById('receiptModal').addEventListener('click', (e) => {
-            if (e.target.id === 'receiptModal') closeReceipt();
-        });
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('Service Worker registered'))
-                .catch(err => console.log('SW registration failed:', err));
+        // Init
+        const yearSelect = document.getElementById('year');
+        for (let y = currentYear; y >= currentYear - 5; y--) {
+            const option = document.createElement('option');
+            option.value = y;
+            option.text = y;
+            yearSelect.appendChild(option);
         }
+
+        document.getElementById('month').value = months[new Date().getMonth()];
+
+        window.onload = function () {
+            migrateOldData();
+            populateSelectors();
+            renderBuildingsList();
+            renderDashboard();
+            renderHistory();
+            showMigrationBanner();
+            setupEventListeners();
+        };
     </script>
 </body>
 </html>
